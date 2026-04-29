@@ -234,7 +234,7 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">Support</h4>
               <ul className="space-y-2 text-sm text-foreground/60">
-                <li><a href="#contact" className="hover:text-foreground smooth-all">Contact Us</a></li>
+                <li><a href="/get-started" className="hover:text-foreground smooth-all">Contact Us</a></li>
               </ul>
             </div>
           </div>
