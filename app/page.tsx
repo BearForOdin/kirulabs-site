@@ -1,248 +1,464 @@
 'use client'
 
-import { Button } from "@/components/ui/button"
-import { FloatingElement } from "@/components/floating-element"
-import { Meteors } from "@/components/ui/meteors"
-import { ArrowRight, Sparkles, Zap, Shield, Rocket, Menu, X } from 'lucide-react'
-import Link from "next/link"
-import { useState } from "react"
+import React from 'react'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { Meteors } from '@/components/ui/meteors'
+import { SiteNavbar } from '@/components/site-navbar'
+import { SiteFooter } from '@/components/site-footer'
+import { Floating3DEasterEggs } from '@/components/floating-3d-easter-eggs'
+import { SpotlightCard } from '@/components/spotlight-card'
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Sparkles,
+  Zap,
+  Shield,
+  Rocket,
+  CheckCircle2,
+  Cpu,
+  Layers,
+  Globe2,
+  Lock,
+  Box,
+  BadgeCheck,
+  Wallet,
+  Wrench,
+} from 'lucide-react'
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
   return (
-    <div className="relative min-h-screen bg-black">
+    <div className="relative min-h-screen bg-[#04040a] text-foreground overflow-hidden">
+      {/* Ambient Background Video & Architectural Grid */}
       <video
         autoPlay
         loop
         muted
+        playsInline
         preload="metadata"
-        className="absolute inset-x-0 top-16 bottom-0 w-full h-[calc(100%-4rem)] object-cover opacity-10 pointer-events-none z-0"
+        className="fixed inset-0 w-full h-full object-cover opacity-[0.08] pointer-events-none z-0"
       >
         <source src="/funnel-animation.mp4" type="video/mp4" />
       </video>
+      <div className="fixed inset-0 bg-grid-pattern pointer-events-none z-0" />
+      <div className="fixed inset-x-0 top-0 h-[42rem] bg-radial-glow pointer-events-none z-0" />
 
-      {/* Animated Navigation */}
-      <nav className="fixed w-full top-0 z-50 glass-effect">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-          </div>
+      {/* Interactive 3D Floating Easter Egg Objects */}
+      <Floating3DEasterEggs />
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="relative text-foreground hover:text-white smooth-all group px-3 py-2 rounded-lg">
-              <span className="relative z-10 font-medium">Features</span>
-              <div className="absolute inset-0 glass-effect rounded-lg opacity-0 group-hover:opacity-100 smooth-all -z-10"></div>
-            </a>
-            <a href="/ideas" className="relative text-foreground hover:text-white smooth-all group px-3 py-2 rounded-lg">
-              <span className="relative z-10 font-medium">Projects</span>
-              <div className="absolute inset-0 glass-effect rounded-lg opacity-0 group-hover:opacity-100 smooth-all -z-10"></div>
-            </a>
-            <a href="/about" className="relative text-foreground hover:text-white smooth-all group px-3 py-2 rounded-lg">
-              <span className="relative z-10 font-medium">About</span>
-              <div className="absolute inset-0 glass-effect rounded-lg opacity-0 group-hover:opacity-100 smooth-all -z-10"></div>
-            </a>
-            <a href="#contact" className="relative text-foreground hover:text-white smooth-all group px-3 py-2 rounded-lg">
-              <span className="relative z-10 font-medium">Contact</span>
-              <div className="absolute inset-0 glass-effect rounded-lg opacity-0 group-hover:opacity-100 smooth-all -z-10"></div>
-            </a>
-          </div>
+      {/* Unified Floating Glass Navbar */}
+      <SiteNavbar />
 
-          <div className="hidden md:flex items-center gap-4">
-            <Link href="/get-started">
-              <Button variant="default" size="sm">Get Started</Button>
-            </Link>
-          </div>
+      {/* HERO SECTION */}
+      <section className="relative pt-32 pb-20 sm:pt-36 sm:pb-24 px-4 sm:px-6 lg:px-8 z-10">
+        <Meteors number={16} className="bg-indigo-400" />
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden glass-button-icon"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
+        {/* Ambient Orbs */}
+        <div className="absolute top-20 right-1/4 w-72 h-72 bg-indigo-600/15 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-40 left-1/4 w-80 h-80 bg-purple-600/10 rounded-full blur-[130px] pointer-events-none" />
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="glass-effect border-t">
-            <div className="px-4 py-4 space-y-3">
-              <a href="#features" className="block text-foreground hover:text-primary tumtum p-2 rounded-lg smooth-all">Features</a>
-              <a href="/ideas" className="block text-foreground hover:text-primary tumtum p-2 rounded-lg smooth-all">Projects</a>
-              <a href="/about" className="block text-foreground hover:text-primary tumtum p-2 rounded-lg smooth-all">About</a>
-              <a href="#contact" className="block text-foreground hover:text-primary tumtum p-2 rounded-lg smooth-all">Contact</a>
-              {/* <Button variant="default" className="w-full">Get Started</Button> */}
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-4xl mx-auto space-y-8">
+            {/* Live Announcement Pill */}
+            <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-full bg-white/[0.04] border border-white/15 px-4 py-1.5 backdrop-blur-md shadow-lg">
+              <span className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-emerald-300">
+                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                NEW FLAGSHIP
+              </span>
+              <span className="text-white/20">|</span>
+              <span className="text-xs sm:text-sm text-zinc-200">
+                Discover <strong className="text-white">siesie.app</strong> — Verified Home &amp; Business Services in Ghana
+              </span>
+              <Link
+                href="/ideas/siesie-app"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-indigo-300 hover:text-indigo-200 ml-1"
+              >
+                Explore
+                <ArrowRight size={13} />
+              </Link>
             </div>
-          </div>
-        )}
-      </nav>
 
-      {/* Hero Section */}
-      <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        {/* Meteors Background */}
-        <Meteors number={15} className="bg-slate-400" />
-
-        {/* Gradient Background Elements */}
-        <div className="absolute top-20 right-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-20 left-10 w-64 sm:w-96 h-64 sm:h-96 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center space-y-6 mb-12">
-            <FloatingElement>
-              <img 
-                src="/kiru-logo.png" 
-                alt="Kirulabs Logo" 
-                className="h-40 sm:h-56 md:h-72 w-auto mx-auto drop-shadow-lg"
-                loading="lazy"
-                decoding="async"
+            {/* Floating Emblem */}
+            <div className="relative mx-auto w-fit">
+              <div className="absolute -inset-6 rounded-full bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-2xl animate-pulse-glow pointer-events-none" />
+              <img
+                src="/kiru-logo.png"
+                alt="Kirulabs Logo"
+                className="relative h-28 sm:h-36 md:h-44 w-auto mx-auto drop-shadow-[0_10px_30px_rgba(99,102,241,0.35)] animate-float-slow"
               />
-            </FloatingElement>
+            </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Launch Faster.
-              <span className="gradient-accent"> Operate Smarter.</span>
-            </h1>
+            {/* Display Headline */}
+            <div className="space-y-4">
+              <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-[1.08]">
+                Launch Faster.
+                <br className="hidden sm:inline" />
+                <span className="gradient-accent"> Operate Smarter.</span>
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto leading-relaxed">
+                Kirulabs exists to simplify technology and amplify growth. We engineer high-reliability software, intelligent hardware systems, and category-defining platforms like{' '}
+                <a
+                  href="https://siesie.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white font-semibold underline decoration-indigo-400/60 underline-offset-4 hover:text-indigo-300 transition-colors"
+                >
+                  siesie.app
+                </a>
+                .
+              </p>
+            </div>
 
-            <p className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto leading-relaxed">
-            Kirulabs exists to simplify technology and amplify growth. We create smart, scalable solutions that help businesses run efficiently, innovate confidently, and scale sustainably.
-            </p>
-
-            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+            {/* Primary CTAs */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
               <Link href="/ideas">
-                <Button variant="default" size="sm" className="gap-2 text-sm">
-                  Explore <ArrowRight size={16} />
+                <Button
+                  size="lg"
+                  className="h-12 px-7 rounded-full bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold shadow-[0_0_35px_rgba(99,102,241,0.45)] border border-white/15 gap-2 text-base"
+                >
+                  Explore Our Projects
+                  <ArrowRight size={18} />
                 </Button>
               </Link>
               <Link href="/get-started">
-                <Button variant="glass" size="sm" className="text-sm">
-                  Get Started
+                <Button
+                  variant="glass"
+                  size="lg"
+                  className="h-12 px-7 rounded-full text-base"
+                >
+                  Start a Project
                 </Button>
               </Link>
             </div>
+
+            {/* Subtle 3D Easter Egg Discovery Prompt */}
+            <div className="pt-2 flex items-center justify-center">
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-3.5 py-1 text-xs font-mono text-zinc-400">
+                <Box size={13} className="text-indigo-400" />
+                <span>Interactive 3D Easter Eggs are floating in space — click any rotating 3D artifact to inspect</span>
+              </div>
+            </div>
           </div>
 
-          {/* Feature Preview Cards */}
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-            <div className="glass-card group hover:glow-effect smooth-all hover:border-primary/50 p-4 sm:p-6">
-              <div className="w-10 sm:w-14 h-10 sm:h-14 glass-effect rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 smooth-all">
-                <Zap className="text-primary" size={20} />
+          {/* 3 Core Value Cards */}
+          <div className="mt-16 sm:mt-20 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <SpotlightCard tilt className="p-6 sm:p-8">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-500/15 border border-indigo-400/30 flex items-center justify-center mb-6 text-indigo-400">
+                <Zap size={22} />
               </div>
-              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3">Comprehensive Solutions</h3>
-              <p className="text-sm sm:text-base tumtum leading-relaxed">We cover every aspect of IT, so you dont need multile vendors</p>
-            </div>
+              <h3 className="text-xl font-bold text-white mb-2.5">
+                Comprehensive Solutions
+              </h3>
+              <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
+                We cover every layer of execution—from cloud software and mobile marketplaces to custom hardware and brand systems—so you never juggle fragmented vendors.
+              </p>
+            </SpotlightCard>
 
-            <div className="glass-card group hover:glow-effect smooth-all hover:border-primary/50 p-4 sm:p-6">
-              <div className="w-10 sm:w-14 h-10 sm:h-14 glass-effect rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 smooth-all">
-                <Shield className="text-primary" size={20} />
+            <SpotlightCard tilt className="p-6 sm:p-8">
+              <div className="w-12 h-12 rounded-2xl bg-purple-500/15 border border-purple-400/30 flex items-center justify-center mb-6 text-purple-400">
+                <Shield size={22} />
               </div>
-              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3">Error-Free Systems</h3>
-              <p className="text-sm sm:text-base tumtum leading-relaxed">Our Mission is to make work more planned, efficient and less prone to mistakes.</p>
-            </div>
+              <h3 className="text-xl font-bold text-white mb-2.5">
+                Error-Free Systems
+              </h3>
+              <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
+                Our mission is to make enterprise operations planned, automated, and resilient—eliminating human bottlenecks with verifiable digital workflows.
+              </p>
+            </SpotlightCard>
 
-            <div className="glass-card group hover:glow-effect smooth-all hover:border-primary/50 p-4 sm:p-6 sm:col-span-2 md:col-span-1">
-              <div className="w-10 sm:w-14 h-10 sm:h-14 glass-effect rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 smooth-all">
-                <Rocket className="text-primary" size={20} />
+            <SpotlightCard tilt className="p-6 sm:p-8 sm:col-span-2 md:col-span-1">
+              <div className="w-12 h-12 rounded-2xl bg-pink-500/15 border border-pink-400/30 flex items-center justify-center mb-6 text-pink-400">
+                <Rocket size={22} />
               </div>
-              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3">Future Ready</h3>
-              <p className="text-sm sm:text-base tumtum leading-relaxed">We combine creativity with technical expertise to deliver solutions that stand out.</p>
-            </div>
+              <h3 className="text-xl font-bold text-white mb-2.5">
+                Future-Ready Craft
+              </h3>
+              <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
+                We pair deep technical architecture with award-winning design and motion so every product we ship commands instant credibility.
+              </p>
+            </SpotlightCard>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+      {/* FLAGSHIP PROJECT SPOTLIGHT: SIESIE.APP */}
+      <section className="relative py-20 sm:py-24 px-4 sm:px-6 lg:px-8 z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 sm:mb-16 space-y-2 sm:space-y-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">Why Choose Kirulabs</h2>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl tumtum max-w-2xl mx-auto">We offer the best solutions to your enterprise.</p>
+          <SpotlightCard
+            spotlightColor="rgba(168, 85, 247, 0.22)"
+            className="p-6 sm:p-10 md:p-12 border-indigo-500/35 shadow-[0_0_70px_rgba(99,102,241,0.16)]"
+          >
+            <div className="grid lg:grid-cols-12 gap-10 items-center">
+              {/* Left Narrative */}
+              <div className="lg:col-span-7 space-y-6">
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/40 px-3 py-1 text-xs font-mono font-semibold text-emerald-300">
+                    <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                    FLAGSHIP PRODUCT • LIVE
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.06] border border-white/10 px-3 py-1 text-xs font-mono text-zinc-300">
+                    <Globe2 size={13} className="text-indigo-400" />
+                    Accra • Tema • Kumasi
+                  </span>
+                </div>
+
+                <div className="space-y-3">
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
+                    Meet <span className="gradient-accent">siesie.app</span>
+                  </h2>
+                  <p className="text-lg sm:text-xl font-medium text-indigo-200">
+                    Ghana’s Trusted Marketplace for Verified Home &amp; Business Service Professionals.
+                  </p>
+                </div>
+
+                <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
+                  In Twi, <strong className="text-white">“Siesie”</strong> means to fix, arrange, and put in order. Built by Kirulabs,{' '}
+                  <a
+                    href="https://siesie.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-indigo-300 hover:text-indigo-200 underline underline-offset-4"
+                  >
+                    siesie.app
+                  </a>{' '}
+                  connects households and facility managers with background-checked pros for plumbing, electrical work, deep cleaning, carpentry, and tiling—protected from start to finish by automated Mobile Money escrow.
+                </p>
+
+                {/* 3 Core Siesie Pillars */}
+                <div className="grid sm:grid-cols-3 gap-3.5 pt-2">
+                  <div className="rounded-2xl bg-white/[0.03] border border-white/10 p-4 space-y-1.5">
+                    <div className="flex items-center gap-2 text-indigo-400 font-semibold text-sm">
+                      <BadgeCheck size={17} />
+                      <span>ID-Verified Pros</span>
+                    </div>
+                    <p className="text-xs text-zinc-400 leading-relaxed">
+                      Every artisan undergoes strict National ID and skill vetting before taking bookings.
+                    </p>
+                  </div>
+
+                  <div className="rounded-2xl bg-white/[0.03] border border-white/10 p-4 space-y-1.5">
+                    <div className="flex items-center gap-2 text-purple-400 font-semibold text-sm">
+                      <Wrench size={17} />
+                      <span>Upfront Pricing</span>
+                    </div>
+                    <p className="text-xs text-zinc-400 leading-relaxed">
+                      Clear, transparent quotes agreed upfront before any repair or maintenance begins.
+                    </p>
+                  </div>
+
+                  <div className="rounded-2xl bg-white/[0.03] border border-white/10 p-4 space-y-1.5">
+                    <div className="flex items-center gap-2 text-pink-400 font-semibold text-sm">
+                      <Wallet size={17} />
+                      <span>Escrow Protection</span>
+                    </div>
+                    <p className="text-xs text-zinc-400 leading-relaxed">
+                      Funds stay safe in escrow and release to MoMo or bank only when you confirm completion.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Actions */}
+                <div className="flex flex-wrap items-center gap-4 pt-2">
+                  <a
+                    href="https://siesie.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button
+                      size="lg"
+                      className="rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-semibold gap-2 shadow-[0_0_30px_rgba(99,102,241,0.4)]"
+                    >
+                      Launch siesie.app
+                      <ArrowUpRight size={18} />
+                    </Button>
+                  </a>
+                  <Link href="/ideas/siesie-app">
+                    <Button variant="glass" size="lg" className="rounded-full gap-2">
+                      Read Engineering Case Study
+                      <ArrowRight size={16} />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right Interactive Product Telemetry Mockup */}
+              <div className="lg:col-span-5">
+                <div className="relative rounded-2xl bg-[#070812] border border-white/15 p-5 sm:p-6 shadow-2xl overflow-hidden">
+                  <div className="absolute -top-20 -right-20 w-52 h-52 bg-gradient-to-br from-blue-500/25 via-purple-500/25 to-pink-500/25 rounded-full blur-3xl pointer-events-none" />
+
+                  {/* Mock Window Top Bar */}
+                  <div className="flex items-center justify-between pb-4 mb-5 border-b border-white/10">
+                    <div className="flex items-center gap-2">
+                      <span className="h-2.5 w-2.5 rounded-full bg-rose-500/80" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-amber-400/80" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
+                    </div>
+                    <div className="rounded-full bg-white/[0.06] border border-white/10 px-3 py-0.5 text-[11px] font-mono text-zinc-300 flex items-center gap-1.5">
+                      <Lock size={10} className="text-emerald-400" />
+                      https://siesie.app
+                    </div>
+                    <span className="text-[10px] font-mono text-indigo-400">ESCROW v2.4</span>
+                  </div>
+
+                  {/* Mock Live Booking Flow */}
+                  <div className="space-y-4">
+                    <div className="rounded-xl bg-white/[0.04] border border-white/10 p-4 flex items-center justify-between">
+                      <div>
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400">
+                          Active Service Dispatch
+                        </span>
+                        <h4 className="text-base font-bold text-white mt-0.5">
+                          Electrical &amp; Smart Wiring • East Legon, Accra
+                        </h4>
+                      </div>
+                      <span className="rounded-full bg-emerald-500/20 border border-emerald-400/40 px-2.5 py-1 text-[11px] font-mono text-emerald-300">
+                        Verified Pro
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="rounded-xl bg-white/[0.03] border border-white/10 p-3.5">
+                        <span className="text-[10px] font-mono text-zinc-400">Upfront Quote</span>
+                        <div className="text-lg font-bold text-white mt-0.5">GHS 450.00</div>
+                        <span className="text-[11px] text-emerald-400">Locked &amp; Approved</span>
+                      </div>
+                      <div className="rounded-xl bg-white/[0.03] border border-white/10 p-3.5">
+                        <span className="text-[10px] font-mono text-zinc-400">Escrow Status</span>
+                        <div className="text-lg font-bold text-indigo-300 mt-0.5">Protected</div>
+                        <span className="text-[11px] text-zinc-400">MoMo Auto-Release</span>
+                      </div>
+                    </div>
+
+                    {/* Escrow Pipeline Steps */}
+                    <div className="rounded-xl bg-indigo-950/30 border border-indigo-500/30 p-4 space-y-2.5">
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="font-mono text-indigo-300">SIESIE TRUST PIPELINE</span>
+                        <span className="font-mono text-emerald-300">3 / 3 VERIFIED</span>
+                      </div>
+                      <div className="space-y-2 text-xs text-zinc-200">
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 size={14} className="text-emerald-400 shrink-0" />
+                          <span>National ID &amp; Trade Vetting Passed</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 size={14} className="text-emerald-400 shrink-0" />
+                          <span>Escrow Funded via Mobile Money</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 size={14} className="text-emerald-400 shrink-0" />
+                          <span>Customer Sign-Off Triggers Instant Payout</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SpotlightCard>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE KIRULABS (BENTO ARCHITECTURE) */}
+      <section id="features" className="relative py-20 sm:py-24 px-4 sm:px-6 lg:px-8 z-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-indigo-500/15 border border-indigo-400/30 px-3.5 py-1 text-xs font-mono uppercase tracking-wider text-indigo-300">
+              <Sparkles size={12} />
+              Enterprise Engineering
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
+              Why Industry Leaders Choose <span className="gradient-accent">Kirulabs</span>
+            </h2>
+            <p className="text-base sm:text-lg text-zinc-300">
+              We combine software engineering, hardware prototyping, and high-craft visual design under one roof.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {[
-              { title: "All-in-One Tech Partner", desc: "We provide complete IT and digital solutions under one roof, from software troubleshooting to creative design and videography." },
-              { title: "Error-Free Efficiency", desc: "Our systems are built to make work easier, more organized, and less prone to mistakes, ensuring smooth operations for enterprises." },
-              { title: "Creative + Technical Expertise", desc: "We blend technical problem-solving with creative services like publications, presentations, and flyers to give your brand a powerful edge." },
-              { title: "Future-Driven Innovation", desc: "At Kirulabs, we don't just solve today's problems, we design solutions that prepare your enterprise for tomorrow's challenges." },
+              {
+                tag: '01 // UNIFIED EXECUTION',
+                title: 'All-in-One Technology Partner',
+                desc: 'We provide complete IT, full-stack software, hardware IoT, and digital creative solutions under one roof—eliminating the delays of coordinating multiple vendors.',
+                icon: <Layers className="text-indigo-400" size={22} />,
+              },
+              {
+                tag: '02 // OPERATIONAL PRECISION',
+                title: 'Error-Free Enterprise Efficiency',
+                desc: 'Our platforms are architected to make complex workflows structured, auditable, and resilient against costly operational mistakes.',
+                icon: <Shield className="text-purple-400" size={22} />,
+              },
+              {
+                tag: '03 // DESIGN + ENGINEERING',
+                title: 'Creative + Technical Mastery',
+                desc: 'We fuse rigorous systems engineering with interactive 3D visuals, brand systems, and motion design to give your enterprise an unmistakable edge.',
+                icon: <Sparkles className="text-pink-400" size={22} />,
+              },
+              {
+                tag: '04 // FRONTIER R&D',
+                title: 'Future-Driven Innovation',
+                desc: 'From escrow-backed marketplaces like siesie.app to autonomous agricultural drones and NFC smart systems, we build for tomorrow’s scale.',
+                icon: <Cpu className="text-cyan-400" size={22} />,
+              },
             ].map((item, i) => (
-              <div key={i} className="glass-card group hover:glow-effect hover:border-primary/50 smooth-all p-4 sm:p-5 md:p-6">
-                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-2 sm:mb-3 group-hover:text-primary smooth-all">{item.title}</h3>
-                <p className="text-sm sm:text-base md:text-lg tumtum leading-relaxed">{item.desc}</p>
-              </div>
+              <SpotlightCard key={i} tilt className="p-7 sm:p-8 flex flex-col justify-between">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-mono text-indigo-400 tracking-wider">
+                      {item.tag}
+                    </span>
+                    <div className="h-10 w-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center">
+                      {item.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white">{item.title}</h3>
+                  <p className="text-zinc-300 text-sm sm:text-base leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </SpotlightCard>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section id="contact" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+      {/* CTA SECTION */}
+      <section id="contact" className="relative py-20 sm:py-24 px-4 sm:px-6 lg:px-8 z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="glass-card text-center space-y-6 sm:space-y-8 border-primary/30 hover:border-primary/60 smooth-all hover:glow-effect p-6 sm:p-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">Ready to Get Started?</h2>
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg tumtum max-w-2xl mx-auto leading-relaxed">
-            Contact us today to discover how Kirulabs can transform your business with innovative tech solutions, smart systems, and cutting-edge digital experiences.
+          <SpotlightCard
+            spotlightColor="rgba(99, 102, 241, 0.25)"
+            className="text-center space-y-6 p-8 sm:p-14 border-indigo-500/30"
+          >
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.06] border border-white/15 px-3.5 py-1 text-xs font-mono text-zinc-300">
+              Ready for Lift-Off
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
+              Ready to Build Your Next <span className="gradient-accent">Breakthrough?</span>
+            </h2>
+            <p className="text-sm sm:text-base md:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed">
+              Partner with Kirulabs to transform your ideas into production-ready software, smart hardware systems, and unforgettable digital experiences.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 pt-2 sm:pt-4">
-              <Link href="/get-started" className="block">
-                <Button variant="default" size="sm" className="gap-2 text-sm">
-                  Get Started
-                  <ArrowRight size={16} />
+            <div className="flex flex-col sm:flex-row justify-center gap-4 pt-3">
+              <Link href="/get-started">
+                <Button
+                  size="lg"
+                  className="w-full sm:w-auto rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold px-8 gap-2 shadow-[0_0_30px_rgba(99,102,241,0.4)]"
+                >
+                  Get Started Today
+                  <ArrowRight size={18} />
                 </Button>
               </Link>
-              <Link href="/about" className="block">
-                <Button variant="glass" size="sm" className="w-full text-sm tumtum">About Us</Button>
+              <Link href="/about">
+                <Button variant="glass" size="lg" className="w-full sm:w-auto rounded-full px-8">
+                  Meet the Team
+                </Button>
               </Link>
             </div>
-          </div>
+          </SpotlightCard>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border/50 glass-effect">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <img src="/kirulabs-logo.png" alt="Kirulabs" className="h-22 w-auto" />
-              <p className="text-sm text-foreground/60">Enterprise innovation made simple</p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Product</h4>
-              <ul className="space-y-2 text-sm text-foreground/60">
-                <li><Link href="/products/features" className="hover:text-foreground transition-colors">Features</Link></li>
-                <li><Link href="/products/pricing" className="hover:text-foreground transition-colors">Pricing</Link></li>
-                <li><Link href="/security" className="hover:text-foreground transition-colors">Security</Link></li>
-                <li><a href="/ideas" className="hover:text-foreground transition-colors">Projects</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-sm text-foreground/60">
-                <li><Link href="/about" className="hover:text-foreground transition-colors">About</Link></li>
-                <li><Link href="/resources/blog" className="hover:text-foreground transition-colors">Blog</Link></li>
-                <li><Link href="/company/careers" className="hover:text-foreground transition-colors">Careers</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Products</h4>
-              <ul className="space-y-2">
-                <li><Link href="/ideas" className="hover:text-foreground smooth-all">Solutions</Link></li>
-                <li><Link href="/products/pricing" className="hover:text-foreground smooth-all">Pricing</Link></li>
-                <li><Link href="/products/features" className="hover:text-foreground smooth-all">Features</Link></li>
-                <li><a href="/about" className="hover:text-foreground transition-colors">About</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Support</h4>
-              <ul className="space-y-2 text-sm text-foreground/60">
-                <li><a href="/get-started" className="hover:text-foreground smooth-all">Contact Us</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-border/50 pt-8 text-center text-sm text-foreground/60">
-            <p>&copy; 2024 Kirulabs. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

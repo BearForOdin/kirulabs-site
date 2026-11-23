@@ -1,278 +1,263 @@
 'use client'
 
-import { Button } from "@/components/ui/button"
-import { IdeaCard } from "@/components/idea-card"
-import Link from "next/link"
-import { ArrowRight, ArrowLeft, Code2, Brain, Globe, Palette, Zap, Shield, Smartphone, Cloud, Lightbulb, Users, Rocket } from 'lucide-react'
-import { useState } from 'react'
+import React, { useState } from 'react'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { IdeaCard } from '@/components/idea-card'
+import { SiteNavbar } from '@/components/site-navbar'
+import { SiteFooter } from '@/components/site-footer'
+import { Floating3DEasterEggs } from '@/components/floating-3d-easter-eggs'
+import { SpotlightCard } from '@/components/spotlight-card'
+import { PROJECTS, ProjectItem } from '@/lib/projects-data'
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Globe,
+  Palette,
+  Shield,
+  Sparkles,
+  MapPin,
+  Database,
+  Cpu,
+  Network,
+  Sprout,
+  Cloud,
+  Smartphone,
+  Code,
+  Video,
+  BadgeCheck,
+  Wallet,
+  Wrench,
+} from 'lucide-react'
 
-interface Idea {
-  id: number
-  title: string
-  description: string
-  category: string
-  icon: any
-  color: string
-  image?: string
-}
-
-const ideas: Idea[] = [
-  {
-    id: 1,
-    title: "Smart Workflow Automation",
-    description: "AI-powered system that learns your business processes and automates repetitive tasks, saving time and reducing errors.",
-    category: "AI & Automation",
-    icon: Zap,
-    color: "from-blue-500 to-cyan-500",
-    image: "/placeholder.svg?height=300&width=400"
-  },
-  {
-    id: 2,
-    title: "Real-time Analytics Dashboard",
-    description: "Live business intelligence platform with predictive insights, custom reports, and data visualization for enterprise decision-making.",
-    category: "Analytics",
-    icon: Brain,
-    color: "from-purple-500 to-pink-500",
-    image: "/placeholder.svg?height=300&width=400"
-  },
-  {
-    id: 3,
-    title: "Cloud-Native Architecture",
-    description: "Scalable microservices infrastructure with automatic load balancing, disaster recovery, and 99.99% uptime guarantee.",
-    category: "Cloud Infrastructure",
-    icon: Cloud,
-    color: "from-orange-500 to-red-500",
-    image: "/placeholder.svg?height=300&width=400"
-  },
-  {
-    id: 4,
-    title: "Interactive Brand Experience",
-    description: "Immersive web experiences with 3D elements, animations, and personalized content that engages your audience like never before.",
-    category: "Design & UX",
-    icon: Palette,
-    color: "from-green-500 to-emerald-500",
-    image: "/placeholder.svg?height=300&width=400"
-  },
-  {
-    id: 5,
-    title: "Mobile-First Progressive App",
-    description: "Native mobile experience on web with offline functionality, push notifications, and seamless synchronization across devices.",
-    category: "Mobile Solutions",
-    icon: Smartphone,
-    color: "from-indigo-500 to-blue-500",
-    image: "/placeholder.svg?height=300&width=400"
-  },
-  {
-    id: 6,
-    title: "Enterprise Security Suite",
-    description: "Comprehensive cybersecurity framework with zero-trust architecture, encryption, threat detection, and compliance management.",
-    category: "Security",
-    icon: Shield,
-    color: "from-red-500 to-rose-500",
-    image: "/placeholder.svg?height=300&width=400"
-  },
-  {
-    id: 7,
-    title: "AI Content Generation",
-    description: "Intelligent system that creates marketing copy, social media content, and technical documentation tailored to your brand voice.",
-    category: "AI & Content",
-    icon: Lightbulb,
-    color: "from-yellow-500 to-orange-500",
-    image: "/placeholder.svg?height=300&width=400"
-  },
-  {
-    id: 8,
-    title: "Team Collaboration Hub",
-    description: "Unified platform for project management, communication, file sharing, and video conferencing with advanced permissions.",
-    category: "Collaboration",
-    icon: Users,
-    color: "from-teal-500 to-green-500",
-    image: "/placeholder.svg?height=300&width=400"
-  },
-  {
-    id: 9,
-    title: "Full-Stack Development Platform",
-    description: "Complete development environment with built-in testing, deployment pipelines, and monitoring for rapid application delivery.",
-    category: "Development",
-    icon: Code2,
-    color: "from-cyan-500 to-blue-500",
-    image: "/placeholder.svg?height=300&width=400"
-  },
-  {
-    id: 10,
-    title: "Global Web Presence",
-    description: "Multi-language, multi-currency e-commerce platform with CDN optimization, SEO excellence, and conversion optimization.",
-    category: "Web Solutions",
-    icon: Globe,
-    color: "from-blue-500 to-purple-500",
-    image: "/placeholder.svg?height=300&width=400"
-  },
-  {
-    id: 11,
-    title: "Business Growth Accelerator",
-    description: "Strategic consulting combined with technology implementation to scale your business 10x faster with measurable results.",
-    category: "Strategy",
-    icon: Rocket,
-    color: "from-rose-500 to-pink-500",
-    image: "/placeholder.svg?height=300&width=400"
-  },
-  {
-    id: 12,
-    title: "Innovation Lab Platform",
-    description: "Dedicated space for experimenting with emerging technologies, prototyping ideas, and bringing breakthrough innovations to market.",
-    category: "Innovation",
-    icon: Lightbulb,
-    color: "from-amber-500 to-orange-500",
-    image: "/placeholder.svg?height=300&width=400"
+function getIconComponent(name: ProjectItem['iconName']) {
+  switch (name) {
+    case 'sparkles':
+      return <Sparkles size={22} />
+    case 'globe':
+      return <Globe size={22} />
+    case 'map-pin':
+      return <MapPin size={22} />
+    case 'database':
+      return <Database size={22} />
+    case 'palette':
+      return <Palette size={22} />
+    case 'cpu':
+      return <Cpu size={22} />
+    case 'shield':
+      return <Shield size={22} />
+    case 'network':
+      return <Network size={22} />
+    case 'sprout':
+      return <Sprout size={22} />
+    case 'cloud':
+      return <Cloud size={22} />
+    case 'smartphone':
+      return <Smartphone size={22} />
+    case 'code':
+      return <Code size={22} />
+    case 'video':
+      return <Video size={22} />
+    default:
+      return <Sparkles size={22} />
   }
-]
+}
 
 export default function IdeasPage() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 
-  const categories = Array.from(new Set(ideas.map(idea => idea.category)))
-  const filteredIdeas = selectedCategory 
-    ? ideas.filter(idea => idea.category === selectedCategory)
-    : ideas
+  const categories = Array.from(new Set(PROJECTS.map((item) => item.category)))
+  const filteredProjects = selectedCategory
+    ? PROJECTS.filter((item) => item.category === selectedCategory)
+    : PROJECTS
+
+  const flagship = PROJECTS.find((p) => p.id === 'siesie-app')
 
   return (
-    <div className="min-h-screen bg-black">
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 glass-effect border-b border-white/10 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-          <Link href="/">
-            <span className="text-xl font-bold text-white hover:text-primary smooth-all">KIRULABS</span>
-          </Link>
+    <div className="relative min-h-screen bg-[#04040a] text-foreground overflow-hidden">
+      <div className="fixed inset-0 bg-grid-pattern pointer-events-none z-0" />
+      <div className="fixed inset-x-0 top-0 h-[38rem] bg-radial-glow pointer-events-none z-0" />
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
-            <a href="/" className="relative text-foreground hover:text-primary smooth-all group">
-              <span className="relative z-10">Home</span>
-              <div className="absolute -inset-2 glass-effect rounded-lg opacity-0 group-hover:opacity-100 smooth-all -z-10"></div>
-            </a>
-            <a href="/about" className="relative text-foreground hover:text-primary smooth-all group">
-              <span className="relative z-10">About</span>
-              <div className="absolute -inset-2 glass-effect rounded-lg opacity-0 group-hover:opacity-100 smooth-all -z-10"></div>
-            </a>
-            <a href="/ideas" className="relative text-foreground hover:text-primary smooth-all group">
-              <span className="relative z-10">Projects</span>
-              <div className="absolute -inset-2 glass-effect rounded-lg opacity-0 group-hover:opacity-100 smooth-all -z-10"></div>
-            </a>
+      {/* Interactive 3D Floating Easter Egg Objects */}
+      <Floating3DEasterEggs />
+
+      {/* Unified Navbar */}
+      <SiteNavbar />
+
+      {/* Hero Header */}
+      <section className="relative pt-32 pb-12 px-4 sm:px-6 lg:px-8 z-10">
+        <div className="max-w-7xl mx-auto text-center space-y-5">
+          <div className="inline-flex items-center gap-2 rounded-full bg-indigo-500/15 border border-indigo-400/30 px-4 py-1.5 text-xs font-mono uppercase tracking-wider text-indigo-300">
+            <Sparkles size={13} />
+            Kirulabs Engineering Portfolio
           </div>
 
-          <div className="flex items-center gap-4">
-            <Link href="/">
-              <Button variant="glass" size="sm">Back Home</Button>
-            </Link>
-            <div className="hidden md:flex">
-              <Link href="/get-started">
-                <Button variant="default" size="sm">Get Started</Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="absolute top-20 right-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-20 left-10 w-64 sm:w-96 h-64 sm:h-96 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto relative z-10 text-center space-y-4 sm:space-y-8">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
-            Our Innovative
-            <span className="gradient-accent"> Projects</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white">
+            Our Innovative <span className="gradient-accent">Projects &amp; Platforms</span>
           </h1>
 
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-foreground/70 max-w-2xl mx-auto leading-relaxed">
-            Explore our collection of groundbreaking solutions and innovative projects designed to transform your business and solve real-world challenges.
+          <p className="text-base sm:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed">
+            Explore our flagship live products, enterprise software deployments, and hardware systems engineered to solve real-world challenges.
           </p>
-        </div>
-      </section>
 
-      {/* Category Filter */}
-      {/* <section className="px-4 sm:px-6 lg:px-8 pb-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
-            <Button
-              variant={selectedCategory === null ? "default" : "glass"}
-              size="sm"
+          {/* Category Filter Pills */}
+          <div className="pt-4 flex flex-wrap gap-2 justify-center">
+            <button
+              type="button"
               onClick={() => setSelectedCategory(null)}
-              className="text-sm sm:text-base"
+              className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all cursor-pointer ${
+                selectedCategory === null
+                  ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-[0_0_20px_rgba(99,102,241,0.4)]'
+                  : 'bg-white/[0.04] border border-white/10 text-zinc-300 hover:text-white hover:bg-white/[0.08]'
+              }`}
             >
-              All Projects
-            </Button>
-            {categories.map(category => (
-              <Button
+              All Projects ({PROJECTS.length})
+            </button>
+            {categories.map((category) => (
+              <button
                 key={category}
-                variant={selectedCategory === category ? "default" : "glass"}
-                size="sm"
+                type="button"
                 onClick={() => setSelectedCategory(category)}
-                className="text-sm sm:text-base"
+                className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all cursor-pointer ${
+                  selectedCategory === category
+                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-[0_0_20px_rgba(99,102,241,0.4)]'
+                    : 'bg-white/[0.04] border border-white/10 text-zinc-300 hover:text-white hover:bg-white/[0.08]'
+                }`}
               >
                 {category}
-              </Button>
+              </button>
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
-      {/* Ideas Grid */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16">
-            {filteredIdeas.map((idea) => {
-              const IconComponent = idea.icon
-              return (
-                <IdeaCard
-                  key={idea.id}
-                  id={idea.id}
-                  title={idea.title}
-                  description={idea.description}
-                  icon={<IconComponent size={28} />}
-                  image={idea.image}
-                />
-              )
-            })}
+      {/* Flagship Spotlight Banner for siesie.app */}
+      {flagship && selectedCategory === null && (
+        <section className="relative pb-8 px-4 sm:px-6 lg:px-8 z-10">
+          <div className="max-w-7xl mx-auto">
+            <SpotlightCard
+              spotlightColor="rgba(168, 85, 247, 0.25)"
+              className="p-6 sm:p-10 border-indigo-500/40 shadow-[0_0_60px_rgba(99,102,241,0.18)]"
+            >
+              <div className="grid lg:grid-cols-12 gap-8 items-center">
+                <div className="lg:col-span-8 space-y-4">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/50 px-3 py-1 text-xs font-mono font-semibold text-emerald-300">
+                      <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                      FLAGSHIP LIVE PLATFORM
+                    </span>
+                    <span className="rounded-full bg-white/[0.06] border border-white/10 px-3 py-1 text-xs font-mono text-indigo-300">
+                      siesie.app
+                    </span>
+                  </div>
+
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+                    siesie.app — Verified Home &amp; Business Services Marketplace
+                  </h2>
+
+                  <p className="text-zinc-300 text-sm sm:text-base leading-relaxed">
+                    {flagship.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-3 pt-1 text-xs text-zinc-200">
+                    <span className="inline-flex items-center gap-1.5 rounded-xl bg-white/[0.04] border border-white/10 px-3 py-1.5">
+                      <BadgeCheck size={15} className="text-indigo-400" />
+                      ID-Verified Service Pros
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 rounded-xl bg-white/[0.04] border border-white/10 px-3 py-1.5">
+                      <Wrench size={15} className="text-purple-400" />
+                      Transparent Upfront Quotes
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 rounded-xl bg-white/[0.04] border border-white/10 px-3 py-1.5">
+                      <Wallet size={15} className="text-pink-400" />
+                      Mobile Money Escrow Protection
+                    </span>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-end">
+                  <a
+                    href="https://siesie.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full"
+                  >
+                    <Button
+                      size="lg"
+                      className="w-full rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-500 hover:to-pink-500 text-white font-semibold gap-2 shadow-[0_0_30px_rgba(168,85,247,0.4)]"
+                    >
+                      Visit siesie.app Live
+                      <ArrowUpRight size={18} />
+                    </Button>
+                  </a>
+                  <Link href="/ideas/siesie-app" className="w-full">
+                    <Button variant="glass" size="lg" className="w-full rounded-full gap-2">
+                      View Architecture &amp; Details
+                      <ArrowRight size={16} />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </SpotlightCard>
           </div>
+        </section>
+      )}
 
-          {filteredIdeas.length === 0 && (
-            <div className="text-center py-16">
-              <p className="text-foreground/60">No ideas found in this category.</p>
-            </div>
-          )}
+      {/* Projects Grid */}
+      <section className="relative py-12 sm:py-16 px-4 sm:px-6 lg:px-8 z-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+            {filteredProjects.map((project) => (
+              <IdeaCard
+                key={project.id}
+                id={project.id}
+                title={project.title}
+                subtitle={project.subtitle}
+                description={project.description}
+                category={project.category}
+                status={project.status}
+                featured={project.featured}
+                externalUrl={project.externalUrl}
+                icon={getIconComponent(project.iconName)}
+                image={project.image}
+                metrics={project.metrics}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+      {/* Bottom CTA */}
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8 z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="glass-card text-center space-y-6 sm:space-y-8 border-primary/30 hover:border-primary/60 smooth-all hover:glow-effect p-6 sm:p-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">Ready to Bring Your Ideas to Life?</h2>
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg tumtum max-w-2xl mx-auto leading-relaxed">
-              Let's collaborate to transform these innovative ideas into real solutions that drive your business forward.
+          <SpotlightCard className="text-center space-y-6 p-8 sm:p-12 border-indigo-500/30">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white">
+              Have a Vision You Want Engineered?
+            </h2>
+            <p className="text-zinc-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+              Let’s collaborate to turn your next product, internal tool, or hardware system into a reliable competitive advantage.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 pt-2 sm:pt-4">
-              <Link href="/get-started" className="block">
-                <Button variant="default" size="sm" className="gap-2 text-sm">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2">
+              <Link href="/get-started">
+                <Button
+                  size="lg"
+                  className="rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white px-8 gap-2"
+                >
                   Start a Project
                   <ArrowRight size={16} />
                 </Button>
               </Link>
-              <Link href="/" className="block">
-                <Button variant="glass" size="sm" className="w-full text-sm tumtum">Back to Home</Button>
+              <Link href="/">
+                <Button variant="glass" size="lg" className="rounded-full px-8">
+                  Back to Home
+                </Button>
               </Link>
             </div>
-          </div>
+          </SpotlightCard>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-white/10 py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center text-xs sm:text-sm text-foreground/60">
-          <p>&copy; 2024 Kirulabs. All rights reserved. Innovating for a better future.</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

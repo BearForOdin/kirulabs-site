@@ -1,86 +1,117 @@
 'use client'
 
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import React from 'react'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 import { ArrowRight, Shield, Lock, Eye, CheckCircle } from 'lucide-react'
+import { SiteNavbar } from '@/components/site-navbar'
+import { SiteFooter } from '@/components/site-footer'
+import { Floating3DEasterEggs } from '@/components/floating-3d-easter-eggs'
+import { SpotlightCard } from '@/components/spotlight-card'
 
 export default function SecurityPage() {
   return (
-    <main className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="fixed w-full top-0 z-50 glass-effect">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <Link href="/">
-            <span className="text-xl font-bold text-white hover:text-primary transition-colors">KIRULABS</span>
-          </Link>
-          <div className="flex items-center gap-4">
-            <Link href="/">
-              <Button variant="glass" size="sm">Back to Home</Button>
-            </Link>
-          </div>
-        </div>
-      </nav>
+    <main className="relative min-h-screen bg-[#04040a] text-foreground overflow-hidden">
+      <div className="fixed inset-0 bg-grid-pattern pointer-events-none z-0" />
+      <div className="fixed inset-x-0 top-0 h-[36rem] bg-radial-glow pointer-events-none z-0" />
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 glass-card rounded-full">
-            <Shield size={18} className="text-primary" />
-            <span className="text-sm font-medium">Security</span>
+      <Floating3DEasterEggs />
+      <SiteNavbar />
+
+      <section className="relative pt-32 pb-12 px-4 sm:px-6 lg:px-8 z-10">
+        <div className="max-w-4xl mx-auto text-center space-y-5">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/15 border border-indigo-400/30 text-indigo-300 text-xs font-mono uppercase tracking-wider">
+            <Shield size={15} />
+            <span>Zero-Trust Architecture</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
-            Enterprise-Grade Security
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white">
+            Enterprise-Grade <span className="gradient-accent">Security</span>
           </h1>
-          <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-            Comprehensive security solutions to protect your business, data, and infrastructure.
+          <p className="text-base sm:text-lg text-zinc-300 max-w-2xl mx-auto">
+            Comprehensive cybersecurity and escrow protection engineered to safeguard your business, customer transactions, and cloud infrastructure.
           </p>
         </div>
       </section>
 
-      {/* Content Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="relative py-12 px-4 sm:px-6 lg:px-8 z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="glass-card p-8 space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-2xl font-bold">Security Information</h2>
-              <p className="text-foreground/70">
-                Our security features and detailed information will be added here.
+          <SpotlightCard className="p-8 sm:p-10 space-y-8 border-indigo-500/30">
+            <div className="space-y-3">
+              <h2 className="text-2xl font-bold text-white">Security &amp; Trust Framework</h2>
+              <p className="text-zinc-300 text-sm sm:text-base leading-relaxed">
+                Every Kirulabs deployment—including our flagship marketplace{' '}
+                <a
+                  href="https://siesie.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-indigo-300 underline underline-offset-4"
+                >
+                  siesie.app
+                </a>
+                —is hardened with strict identity verification, encrypted data pipelines, and continuous anomaly monitoring.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
               {[
-                { icon: <Lock size={24} />, title: "Data Protection", desc: "Encryption and secure data handling" },
-                { icon: <Eye size={24} />, title: "Monitoring", desc: "24/7 security monitoring and alerts" },
-                { icon: <Shield size={24} />, title: "Compliance", desc: "Industry-standard compliance" },
-                { icon: <CheckCircle size={24} />, title: "Verification", desc: "Security audits and testing" }
+                {
+                  icon: <Lock size={22} />,
+                  title: 'End-to-End Data & Escrow Protection',
+                  desc: 'AES-256 encryption at rest, TLS 1.3 in transit, and milestone-locked escrow safeguards.',
+                },
+                {
+                  icon: <Eye size={22} />,
+                  title: '24/7 Telemetry Monitoring',
+                  desc: 'Real-time threat detection, rate-limiting, and automated incident alerts.',
+                },
+                {
+                  icon: <Shield size={22} />,
+                  title: 'Zero-Trust Compliance',
+                  desc: 'Role-based access controls, audit logging, and strict identity verification.',
+                },
+                {
+                  icon: <CheckCircle size={22} />,
+                  title: 'Continuous Audits & Pentesting',
+                  desc: 'Proactive vulnerability scanning and code reviews before every production release.',
+                },
               ].map((item, i) => (
-                <div key={i} className="p-4 rounded-lg bg-primary/5 border border-primary/20">
-                  <div className="text-primary mb-3">{item.icon}</div>
-                  <h3 className="font-semibold mb-2">{item.title}</h3>
-                  <p className="text-sm text-foreground/60">{item.desc}</p>
+                <div
+                  key={i}
+                  className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2.5"
+                >
+                  <div className="text-indigo-400">{item.icon}</div>
+                  <h3 className="font-bold text-white text-lg">{item.title}</h3>
+                  <p className="text-sm text-zinc-300 leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
-          </div>
+          </SpotlightCard>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 px-4 sm:px-6 lg:px-8 z-10">
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          <h2 className="text-2xl font-bold">Ready to Secure Your Business?</h2>
-          <p className="text-foreground/70">Contact us to learn more about our security solutions.</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">
+            Ready to Secure Your Enterprise?
+          </h2>
+          <p className="text-zinc-300">
+            Schedule a security architecture audit or consultation with our engineering team.
+          </p>
           <div className="flex gap-4 justify-center">
-            <Link href="/company/contact">
-              <Button size="lg" className="gap-2">
-                Get in Touch
+            <Link href="/get-started?idea=Enterprise%20Security%20Suite">
+              <Button
+                size="lg"
+                className="rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white gap-2 px-8"
+              >
+                Request Security Audit
                 <ArrowRight size={18} />
               </Button>
             </Link>
           </div>
         </div>
       </section>
+
+      <SiteFooter />
     </main>
   )
 }
