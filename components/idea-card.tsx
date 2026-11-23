@@ -23,35 +23,37 @@ export function IdeaCard({
   icon,
 }: IdeaCardProps) {
   return (
-    <div className="glass-card flex flex-col justify-between h-full p-6 sm:p-7">
+    <div className="glass-card group flex flex-col justify-between h-full p-6 sm:p-7">
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-200">
+          <div className="w-10 h-10 rounded-xl bg-secondary border border-border flex items-center justify-center text-foreground transition-transform duration-300 group-hover:scale-105">
             {icon}
           </div>
           {category && (
-            <span className="text-xs text-zinc-500 font-mono">{category}</span>
+            <span className="text-[11px] text-muted-foreground font-mono uppercase tracking-wider">
+              {category}
+            </span>
           )}
         </div>
 
-        <h3 className="text-xl font-semibold text-white tracking-tight">
+        <h3 className="text-xl font-semibold text-foreground tracking-tight">
           {title}
         </h3>
 
-        <p className="text-zinc-400 text-sm leading-relaxed">
+        <p className="text-muted-foreground text-sm leading-relaxed">
           {description}
         </p>
       </div>
 
-      <div className="pt-6 mt-6 border-t border-zinc-900 flex items-center justify-between gap-3">
+      <div className="pt-5 mt-6 border-t border-border flex items-center justify-between gap-3">
         <Link
           href={`/ideas/${id}`}
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-200 hover:text-white transition-colors group"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:opacity-75 transition-opacity group/link"
         >
           <span>More info</span>
           <ArrowRight
             size={15}
-            className="text-zinc-500 group-hover:text-white group-hover:translate-x-0.5 transition-all"
+            className="text-muted-foreground group-hover/link:text-foreground group-hover/link:translate-x-0.5 transition-all"
           />
         </Link>
 
@@ -60,10 +62,10 @@ export function IdeaCard({
             href={externalUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-xs font-medium text-zinc-400 hover:text-white transition-colors"
+            className="inline-flex items-center gap-1 rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-foreground hover:bg-foreground hover:text-background transition-colors"
           >
             <span>siesie.app</span>
-            <ArrowUpRight size={13} />
+            <ArrowUpRight size={12} />
           </a>
         )}
       </div>

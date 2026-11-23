@@ -54,144 +54,149 @@ export default function GetStartedPage() {
   ]
 
   return (
-    <div className="relative min-h-screen bg-[#050505] text-white">
+    <div className="relative min-h-screen bg-background text-foreground transition-colors duration-300">
       <Floating3DEasterEggs />
       <SiteNavbar />
 
-      <section className="pt-36 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-xl mx-auto">
-          <div className="text-center mb-10 space-y-2">
-            <h1 className="text-3xl sm:text-4xl font-bold text-white">
-              Start Your Journey
-            </h1>
-            <p className="text-sm sm:text-base text-zinc-400">
-              Tell us about your company and what you&apos;re looking to achieve.
-            </p>
-          </div>
-
-          <div className="glass-card p-6 sm:p-8">
-            <form
-              action="https://formsubmit.co/kirulabsofficial@gmail.com"
-              method="POST"
-              className="space-y-5"
-            >
-              <input type="hidden" name="_subject" value="New Kirulabs Request" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
-
-              <div>
-                <label htmlFor="companyName" className="block text-xs font-medium mb-1.5 text-zinc-300">
-                  Company Name *
-                </label>
-                <input
-                  type="text"
-                  id="companyName"
-                  name="companyName"
-                  value={formData.companyName}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-white placeholder-zinc-500 focus:border-zinc-500 focus:outline-none text-sm"
-                  placeholder="Your company name"
-                />
+      <main className="max-w-6xl mx-auto border-x border-border/70">
+        <section className="pt-32 pb-20 px-6 sm:px-10 lg:px-14">
+          <div className="max-w-xl mx-auto">
+            <div className="text-center mb-10 space-y-2">
+              <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+                Project Inquiry
               </div>
+              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+                Start Your Journey
+              </h1>
+              <p className="text-sm sm:text-base text-muted-foreground">
+                Tell us about your company and what you&apos;re looking to achieve.
+              </p>
+            </div>
 
-              <div>
-                <label htmlFor="contactPerson" className="block text-xs font-medium mb-1.5 text-zinc-300">
-                  Contact Person *
-                </label>
-                <input
-                  type="text"
-                  id="contactPerson"
-                  name="contactPerson"
-                  value={formData.contactPerson}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-white placeholder-zinc-500 focus:border-zinc-500 focus:outline-none text-sm"
-                  placeholder="Your name"
-                />
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="email" className="block text-xs font-medium mb-1.5 text-zinc-300">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-white placeholder-zinc-500 focus:border-zinc-500 focus:outline-none text-sm"
-                    placeholder="you@company.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="block text-xs font-medium mb-1.5 text-zinc-300">
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-white placeholder-zinc-500 focus:border-zinc-500 focus:outline-none text-sm"
-                    placeholder="+233 55 123 4567"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="service" className="block text-xs font-medium mb-1.5 text-zinc-300">
-                  Service *
-                </label>
-                <select
-                  id="service"
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-white focus:border-zinc-500 focus:outline-none text-sm"
-                >
-                  <option value="">Select a service...</option>
-                  {serviceOptions.map((service) => (
-                    <option key={service} value={service}>
-                      {service}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="description" className="block text-xs font-medium mb-1.5 text-zinc-300">
-                  Project Details (optional)
-                </label>
-                <textarea
-                  id="description"
-                  name="description"
-                  value={formData.description}
-                  onChange={handleChange}
-                  rows={4}
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-white placeholder-zinc-500 focus:border-zinc-500 focus:outline-none text-sm resize-none"
-                  placeholder="Describe what you need..."
-                />
-              </div>
-
-              <Button
-                type="submit"
-                className="w-full rounded-full bg-white text-black hover:bg-zinc-200 font-medium gap-2 py-5"
+            <div className="glass-card p-6 sm:p-8">
+              <form
+                action="https://formsubmit.co/kirulabsofficial@gmail.com"
+                method="POST"
+                className="space-y-5"
               >
-                Send Request
-                <ArrowRight size={16} />
-              </Button>
-            </form>
+                <input type="hidden" name="_subject" value="New Kirulabs Request" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+
+                <div>
+                  <label htmlFor="companyName" className="block text-xs font-medium mb-1.5 text-foreground">
+                    Company Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="companyName"
+                    name="companyName"
+                    value={formData.companyName}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-secondary/60 border border-border text-foreground placeholder-muted-foreground focus:border-foreground focus:outline-none text-sm"
+                    placeholder="Your company name"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="contactPerson" className="block text-xs font-medium mb-1.5 text-foreground">
+                    Contact Person *
+                  </label>
+                  <input
+                    type="text"
+                    id="contactPerson"
+                    name="contactPerson"
+                    value={formData.contactPerson}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-secondary/60 border border-border text-foreground placeholder-muted-foreground focus:border-foreground focus:outline-none text-sm"
+                    placeholder="Your name"
+                  />
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="email" className="block text-xs font-medium mb-1.5 text-foreground">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-secondary/60 border border-border text-foreground placeholder-muted-foreground focus:border-foreground focus:outline-none text-sm"
+                      placeholder="you@company.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="phone" className="block text-xs font-medium mb-1.5 text-foreground">
+                      Phone Number *
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-secondary/60 border border-border text-foreground placeholder-muted-foreground focus:border-foreground focus:outline-none text-sm"
+                      placeholder="+233 55 123 4567"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="service" className="block text-xs font-medium mb-1.5 text-foreground">
+                    Service *
+                  </label>
+                  <select
+                    id="service"
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-secondary/60 border border-border text-foreground focus:border-foreground focus:outline-none text-sm"
+                  >
+                    <option value="">Select a service...</option>
+                    {serviceOptions.map((service) => (
+                      <option key={service} value={service}>
+                        {service}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="description" className="block text-xs font-medium mb-1.5 text-foreground">
+                    Project Details (optional)
+                  </label>
+                  <textarea
+                    id="description"
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChange}
+                    rows={4}
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-secondary/60 border border-border text-foreground placeholder-muted-foreground focus:border-foreground focus:outline-none text-sm resize-none"
+                    placeholder="Describe what you need..."
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  className="w-full rounded-full bg-foreground text-background hover:bg-foreground/90 font-medium gap-2 py-5"
+                >
+                  Send Request
+                  <ArrowRight size={16} />
+                </Button>
+              </form>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
       <SiteFooter />
     </div>

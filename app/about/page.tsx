@@ -59,32 +59,35 @@ export default function About() {
   ]
 
   return (
-    <div className="relative min-h-screen bg-[#050505] text-white">
+    <div className="relative min-h-screen bg-background text-foreground transition-colors duration-300">
       <Floating3DEasterEggs />
       <SiteNavbar />
 
-      {/* Hero Section */}
-      <section className="pt-36 pb-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto text-center space-y-4">
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white">
-            Meet the <span className="text-zinc-400">Team</span>
-          </h1>
-          <p className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            Leaders united by a passion for practical innovation and dependable engineering.
-          </p>
-        </div>
-      </section>
+      <main className="max-w-6xl mx-auto border-x border-border/70">
+        {/* Hero Section */}
+        <section className="pt-32 pb-12 px-6 sm:px-10 lg:px-14 border-b border-border/80">
+          <div className="max-w-2xl space-y-3">
+            <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+              Leadership &amp; Story
+            </div>
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
+              Meet the <span className="text-muted-foreground">Team</span>
+            </h1>
+            <p className="text-base text-muted-foreground leading-relaxed">
+              Leaders united by a passion for practical innovation and dependable engineering.
+            </p>
+          </div>
+        </section>
 
-      {/* Founders Grid */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
+        {/* Founders Grid */}
+        <section className="py-14 px-6 sm:px-10 lg:px-14">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {founders.map((founder) => (
               <div
                 key={founder.id}
                 className="glass-card flex flex-col h-full p-5"
               >
-                <div className="relative mb-4 overflow-hidden rounded-xl border border-zinc-800 aspect-square bg-zinc-900">
+                <div className="relative mb-4 overflow-hidden rounded-xl border border-border aspect-square bg-secondary">
                   <img
                     src={founder.image}
                     alt={founder.name}
@@ -92,17 +95,17 @@ export default function About() {
                   />
                 </div>
 
-                <h3 className="text-lg font-semibold text-white">
+                <h3 className="text-lg font-semibold text-foreground">
                   {founder.name}
                 </h3>
-                <p className="text-xs text-zinc-400 mt-0.5 mb-3">
+                <p className="text-xs text-muted-foreground mt-0.5 mb-3">
                   {founder.title}
                 </p>
-                <p className="text-xs sm:text-sm text-zinc-400 flex-grow mb-4 leading-relaxed">
+                <p className="text-xs sm:text-sm text-muted-foreground flex-grow mb-4 leading-relaxed">
                   {founder.bio}
                 </p>
 
-                <div className="flex gap-2 pt-3 border-t border-zinc-900">
+                <div className="flex gap-2 pt-3 border-t border-border">
                   {founder.socials.map((social, idx) => {
                     const Icon = social.icon
                     return (
@@ -119,37 +122,40 @@ export default function About() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Story Section */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto">
-          <div className="glass-card space-y-4 p-8">
-            <h2 className="text-2xl font-bold text-white">Our Story</h2>
-            <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
-              Kirulabs is a digital and technology solutions company founded in Ghana in 2024, built to help businesses move from ideas to operational systems in record time—eliminating the delays and fragmentation that organizations face when working with multiple disconnected vendors.
-            </p>
-            <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
-              We operate at the intersection of technology, creativity, and business execution, building client platforms as well as our own products like{' '}
-              <a
-                href="https://siesie.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white underline underline-offset-4"
-              >
-                siesie.app
-              </a>
-              .
-            </p>
+        {/* Story Section */}
+        <section className="py-12 px-6 sm:px-10 lg:px-14 border-t border-border/80 bg-secondary/20">
+          <div className="max-w-3xl">
+            <div className="space-y-4">
+              <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+                Our Origin
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+                Our Story
+              </h2>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                Kirulabs is a digital and technology solutions company founded in Ghana in 2024, built to help businesses move from ideas to operational systems in record time—eliminating the delays and fragmentation that organizations face when working with multiple disconnected vendors.
+              </p>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                We operate at the intersection of technology, creativity, and business execution, building client platforms as well as our own products like{' '}
+                <a
+                  href="https://siesie.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground font-medium underline underline-offset-4"
+                >
+                  siesie.app
+                </a>
+                .
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Core Values Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-white mb-10">
+        {/* Core Values Section */}
+        <section className="py-16 px-6 sm:px-10 lg:px-14 border-t border-border/80">
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-10">
             Our Core Values
           </h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -180,15 +186,16 @@ export default function About() {
               },
             ].map((value, i) => (
               <div key={i} className="glass-card p-6 space-y-2">
-                <h3 className="text-lg font-semibold text-white">{value.title}</h3>
-                <p className="text-sm text-zinc-400 leading-relaxed">
+                <div className="text-xs font-mono text-muted-foreground">0{i + 1}</div>
+                <h3 className="text-lg font-semibold text-foreground">{value.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {value.description}
                 </p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
       <SiteFooter />
     </div>

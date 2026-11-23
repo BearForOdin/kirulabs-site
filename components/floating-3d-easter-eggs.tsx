@@ -15,25 +15,25 @@ const ARTIFACTS: EasterEggArtifact[] = [
     id: 'tesseract',
     name: '4D Tesseract Core',
     note: 'Kirulabs (Dekiru Co. Ltd.) was founded in Ghana in 2024 to unify software, hardware, and design under one roof.',
-    positionClass: 'top-[14rem] left-6 lg:left-14',
+    positionClass: 'top-[13rem] left-4 xl:left-12',
   },
   {
     id: 'gyroscope',
     name: 'Siesie Orbital Node',
     note: 'In Twi, "Siesie" means to fix and put in order — powering verified home & business services on siesie.app.',
-    positionClass: 'top-[34rem] right-6 lg:right-14',
+    positionClass: 'top-[32rem] right-4 xl:right-12',
   },
   {
     id: 'octahedron',
-    name: 'Data Prism',
+    name: '4D Data Prism',
     note: 'Precision engineering built to eliminate operational bottlenecks and human error.',
-    positionClass: 'top-[64rem] left-8 lg:left-16',
+    positionClass: 'top-[58rem] left-6 xl:left-14',
   },
   {
     id: 'monolith',
     name: 'Smart Hardware Slab',
     note: 'Bridging cloud platforms with real-world NFC systems and agricultural hardware.',
-    positionClass: 'top-[90rem] right-8 lg:right-16',
+    positionClass: 'top-[82rem] right-6 xl:right-14',
   },
 ]
 
@@ -79,11 +79,11 @@ export function Floating3DEasterEggs() {
 
   return (
     <>
-      {/* 4D Purple Floating Objects (Easter Eggs) */}
+      {/* 4D Purple Floating Objects (The ONLY colored elements on the monochrome site) */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden z-20 select-none">
         {ARTIFACTS.map((artifact, index) => {
           const isHovered = hoveredId === artifact.id
-          const depthFactor = (index + 1) * 8
+          const depthFactor = (index + 1) * 9
           const offsetX = mouse.x * depthFactor
           const offsetY = mouse.y * depthFactor
 
@@ -94,7 +94,7 @@ export function Floating3DEasterEggs() {
                 transform: `translate3d(${offsetX.toFixed(1)}px, ${offsetY.toFixed(1)}px, 0)`,
                 transition: 'transform 300ms cubic-bezier(0.16, 1, 0.3, 1)',
               }}
-              className={`pointer-events-auto absolute ${artifact.positionClass} hidden md:block`}
+              className={`pointer-events-auto absolute ${artifact.positionClass} hidden lg:block`}
             >
               <button
                 type="button"
@@ -104,36 +104,48 @@ export function Floating3DEasterEggs() {
                 onMouseLeave={() => setHoveredId(null)}
                 className="group relative flex flex-col items-center focus:outline-none cursor-pointer"
               >
-                {/* Subtle Purple Ambient Glow ONLY on the 4D object */}
-                <div className="absolute -inset-4 rounded-full bg-purple-600/20 blur-xl transition-all duration-300 group-hover:bg-purple-500/35 group-hover:scale-110" />
+                {/* Purple Ambient Halo */}
+                <div className="absolute -inset-4 rounded-full bg-purple-600/20 dark:bg-purple-500/25 blur-xl transition-all duration-300 group-hover:bg-purple-600/35 group-hover:scale-125" />
 
                 <div className="perspective-1000 animate-float-slow relative flex h-16 w-16 items-center justify-center">
-                  {/* 1. 4D Tesseract (Outer + Inner Nested Rotating Purple Cubes) */}
+                  {/* 1. 4D Tesseract (Outer + Counter-Rotating Inner Purple Hypercube) */}
                   {artifact.id === 'tesseract' && (
                     <div
-                      className={`preserve-3d relative h-11 w-11 ${
+                      className={`preserve-3d relative h-12 w-12 ${
                         isHovered ? 'spin-3d-cube-fast' : 'spin-3d-cube'
                       }`}
                     >
                       {[
-                        'rotateY(0deg) translateZ(22px)',
-                        'rotateY(90deg) translateZ(22px)',
-                        'rotateY(180deg) translateZ(22px)',
-                        'rotateY(-90deg) translateZ(22px)',
-                        'rotateX(90deg) translateZ(22px)',
-                        'rotateX(-90deg) translateZ(22px)',
+                        'rotateY(0deg) translateZ(24px)',
+                        'rotateY(90deg) translateZ(24px)',
+                        'rotateY(180deg) translateZ(24px)',
+                        'rotateY(-90deg) translateZ(24px)',
+                        'rotateX(90deg) translateZ(24px)',
+                        'rotateX(-90deg) translateZ(24px)',
                       ].map((transform, i) => (
                         <div
                           key={i}
                           style={{ transform }}
-                          className="absolute inset-0 rounded-md border border-purple-400/60 bg-purple-500/10 shadow-[0_0_12px_rgba(168,85,247,0.3)]"
+                          className="absolute inset-0 rounded-md border-[1.5px] border-purple-600/75 dark:border-purple-400/75 bg-purple-600/12 dark:bg-purple-500/15 shadow-[0_0_15px_rgba(147,51,234,0.3)]"
                         />
                       ))}
-                      {/* Inner 4D Hypercube Core */}
-                      <div
-                        style={{ transform: 'rotateX(45deg) rotateY(45deg)' }}
-                        className="absolute inset-2.5 rounded-xs border border-purple-300/80 bg-purple-500/30 shadow-[0_0_14px_rgba(168,85,247,0.65)]"
-                      />
+                      {/* Inner Counter-Rotating 4D Hypercube */}
+                      <div className="preserve-3d spin-inner-4d absolute inset-3">
+                        {[
+                          'rotateY(0deg) translateZ(12px)',
+                          'rotateY(90deg) translateZ(12px)',
+                          'rotateY(180deg) translateZ(12px)',
+                          'rotateY(-90deg) translateZ(12px)',
+                          'rotateX(90deg) translateZ(12px)',
+                          'rotateX(-90deg) translateZ(12px)',
+                        ].map((transform, j) => (
+                          <div
+                            key={j}
+                            style={{ transform }}
+                            className="absolute inset-0 rounded-xs border border-purple-700 dark:border-purple-300 bg-purple-600/40 dark:bg-purple-400/35 shadow-[0_0_12px_rgba(147,51,234,0.6)]"
+                          />
+                        ))}
+                      </div>
                     </div>
                   )}
 
@@ -146,17 +158,17 @@ export function Floating3DEasterEggs() {
                     >
                       <div
                         style={{ transform: 'rotateX(65deg) rotateY(15deg)' }}
-                        className="absolute inset-0 rounded-full border border-purple-400/70 shadow-[0_0_14px_rgba(168,85,247,0.35)]"
+                        className="absolute inset-0 rounded-full border-[1.5px] border-purple-600/80 dark:border-purple-400/80 shadow-[0_0_14px_rgba(147,51,234,0.35)]"
                       />
                       <div
                         style={{ transform: 'rotateX(-55deg) rotateY(70deg)' }}
-                        className="absolute inset-1.5 rounded-full border border-purple-300/60"
+                        className="absolute inset-1.5 rounded-full border-[1.5px] border-purple-500/70 dark:border-purple-300/70"
                       />
                       <div
                         style={{ transform: 'rotateY(45deg) rotateZ(45deg)' }}
-                        className="absolute inset-3 rounded-full border border-purple-400/50"
+                        className="absolute inset-3 rounded-full border border-purple-600/60 dark:border-purple-400/60"
                       />
-                      <div className="h-3 w-3 rounded-full bg-purple-400 shadow-[0_0_12px_#a855f7]" />
+                      <div className="h-3.5 w-3.5 rounded-full bg-purple-600 dark:bg-purple-400 shadow-[0_0_14px_#9333ea]" />
                     </div>
                   )}
 
@@ -171,10 +183,10 @@ export function Floating3DEasterEggs() {
                         <div
                           key={deg}
                           style={{ transform: `rotateY(${deg}deg) rotateZ(45deg)` }}
-                          className="absolute h-9 w-9 rounded-xs border border-purple-400/65 bg-purple-500/10 shadow-[0_0_12px_rgba(168,85,247,0.3)]"
+                          className="absolute h-9 w-9 rounded-xs border-[1.5px] border-purple-600/75 dark:border-purple-400/75 bg-purple-600/12 dark:bg-purple-500/15 shadow-[0_0_12px_rgba(147,51,234,0.3)]"
                         />
                       ))}
-                      <div className="h-2.5 w-2.5 rotate-45 bg-purple-300 shadow-[0_0_10px_#a855f7]" />
+                      <div className="h-3 w-3 rotate-45 bg-purple-600 dark:bg-purple-300 shadow-[0_0_12px_#9333ea]" />
                     </div>
                   )}
 
@@ -187,17 +199,17 @@ export function Floating3DEasterEggs() {
                     >
                       <div
                         style={{ transform: 'translateZ(5px)' }}
-                        className="absolute inset-0 rounded-lg border border-purple-400/65 bg-purple-500/15 p-2 flex flex-col justify-between shadow-[0_0_15px_rgba(168,85,247,0.3)]"
+                        className="absolute inset-0 rounded-lg border-[1.5px] border-purple-600/75 dark:border-purple-400/75 bg-purple-600/15 dark:bg-purple-500/20 p-2 flex flex-col justify-between shadow-[0_0_15px_rgba(147,51,234,0.3)]"
                       >
-                        <div className="h-2 w-3 rounded-xs bg-purple-300/80" />
+                        <div className="h-2 w-3 rounded-xs bg-purple-600 dark:bg-purple-300" />
                         <div className="space-y-1">
-                          <div className="h-0.5 w-full bg-purple-300/50 rounded" />
-                          <div className="h-0.5 w-2/3 bg-purple-400/50 rounded" />
+                          <div className="h-0.5 w-full bg-purple-600/60 dark:bg-purple-300/60 rounded" />
+                          <div className="h-0.5 w-2/3 bg-purple-600/60 dark:bg-purple-400/60 rounded" />
                         </div>
                       </div>
                       <div
                         style={{ transform: 'translateZ(-5px)' }}
-                        className="absolute inset-0 rounded-lg border border-purple-500/40 bg-purple-950/30"
+                        className="absolute inset-0 rounded-lg border border-purple-600/45 dark:border-purple-500/45 bg-purple-600/10 dark:bg-purple-950/30"
                       />
                     </div>
                   )}
@@ -211,25 +223,25 @@ export function Floating3DEasterEggs() {
       {/* Minimal Easter Egg Card when clicked */}
       {activeEgg && (
         <div className="fixed bottom-5 right-5 z-50 max-w-xs animate-reveal-up">
-          <div className="rounded-xl bg-[#0c0c0e] border border-purple-500/40 p-4 shadow-2xl">
+          <div className="rounded-xl bg-card border border-purple-500/50 p-4 shadow-xl">
             <div className="flex items-center justify-between gap-3 mb-1.5">
               <div className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-purple-400" />
-                <span className="text-xs font-mono text-purple-300">
+                <span className="h-2 w-2 rounded-full bg-purple-600 dark:bg-purple-400" />
+                <span className="text-xs font-mono font-medium text-purple-600 dark:text-purple-300">
                   Easter Egg {discovered.length}/{ARTIFACTS.length}
                 </span>
               </div>
               <button
                 type="button"
                 onClick={() => setActiveEgg(null)}
-                className="text-zinc-500 hover:text-white transition-colors"
+                className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="Close Easter Egg notification"
               >
                 <X size={14} />
               </button>
             </div>
-            <h4 className="text-sm font-semibold text-white mb-1">{activeEgg.name}</h4>
-            <p className="text-xs text-zinc-400 leading-relaxed">{activeEgg.note}</p>
+            <h4 className="text-sm font-semibold text-foreground mb-1">{activeEgg.name}</h4>
+            <p className="text-xs text-muted-foreground leading-relaxed">{activeEgg.note}</p>
           </div>
         </div>
       )}
