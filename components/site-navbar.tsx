@@ -8,9 +8,9 @@ import { Button } from '@/components/ui/button'
 import { Menu, X, Sun, Moon, ArrowUpRight } from 'lucide-react'
 
 const NAV_ITEMS = [
+  { label: 'Home', href: '/' },
   { label: 'Projects', href: '/ideas' },
   { label: 'About', href: '/about' },
-  { label: 'Security', href: '/security' },
   { label: 'Careers', href: '/company/careers' },
 ]
 
@@ -31,32 +31,35 @@ export function SiteNavbar() {
   }
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 border-b border-border/80 bg-background/85 backdrop-blur-md transition-colors duration-300">
-      <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Brand */}
-        <Link href="/" className="flex items-center gap-2.5 group">
+    <header className="fixed top-0 inset-x-0 z-50 border-b border-border/80 bg-background/90 backdrop-blur-md transition-colors duration-300">
+      <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        {/* Brand Logo ONLY (No "KIRULABS" text, much bigger and clearer by cropping excess padding) */}
+        <Link
+          href="/"
+          aria-label="Kirulabs Home"
+          className="relative flex items-center justify-center h-14 w-36 overflow-hidden group"
+        >
           <img
             src="/kiru-logo.png"
             alt="Kirulabs"
-            className="h-7 w-auto object-contain invert dark:invert-0 transition-transform duration-300 group-hover:scale-105"
+            className="w-48 max-w-none h-auto object-contain invert dark:invert-0 transition-transform duration-500 cubic-bezier(0.16,1,0.3,1) group-hover:scale-110"
           />
-          <span className="text-sm font-bold tracking-wider text-foreground">
-            KIRULABS
-          </span>
         </Link>
 
-        {/* Desktop Nav Links (siesie.app removed as requested) */}
-        <div className="hidden md:flex items-center gap-1 rounded-full border border-border bg-secondary/60 p-1">
+        {/* Desktop Nav Links: Home, Projects, About, Careers */}
+        <div className="hidden md:flex items-center gap-1 rounded-full border border-border bg-secondary/50 p-1">
           {NAV_ITEMS.map((item) => {
             const isActive =
-              pathname === item.href || pathname?.startsWith(item.href + '/')
+              item.href === '/'
+                ? pathname === '/'
+                : pathname === item.href || pathname?.startsWith(item.href + '/')
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+                className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${
                   isActive
-                    ? 'bg-background text-foreground shadow-2xs border border-border/80'
+                    ? 'bg-foreground text-background shadow-xs scale-[1.02]'
                     : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
@@ -73,10 +76,10 @@ export function SiteNavbar() {
             type="button"
             onClick={toggleTheme}
             aria-label="Toggle Light and Dark Mode"
-            className="inline-flex items-center gap-1 rounded-full border border-border bg-secondary/70 p-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1 rounded-full border border-border bg-secondary/70 p-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-all duration-300 cursor-pointer"
           >
             <span
-              className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 transition-all ${
+              className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 transition-all duration-300 ${
                 !isDark
                   ? 'bg-background text-foreground shadow-2xs'
                   : 'text-muted-foreground'
@@ -86,7 +89,7 @@ export function SiteNavbar() {
               <span>Light</span>
             </span>
             <span
-              className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 transition-all ${
+              className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 transition-all duration-300 ${
                 isDark
                   ? 'bg-background text-foreground shadow-2xs'
                   : 'text-muted-foreground'
@@ -100,7 +103,7 @@ export function SiteNavbar() {
           <Link href="/get-started">
             <Button
               size="sm"
-              className="rounded-full bg-foreground text-background hover:bg-foreground/90 font-medium px-4 h-8.5 text-xs gap-1"
+              className="rounded-full bg-foreground text-background hover:bg-foreground/90 font-medium px-4 h-9 text-xs gap-1 transition-transform duration-300 hover:-translate-y-0.5"
             >
               <span>Get Started</span>
               <ArrowUpRight size={13} />
@@ -132,7 +135,7 @@ export function SiteNavbar() {
 
       {/* Mobile Dropdown */}
       {isMenuOpen && (
-        <div className="md:hidden border-t border-border bg-background px-4 py-4 space-y-2">
+        <div className="md:hidden border-t border-border bg-background px-4 py-4 space-y-2 animate-reveal-up">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}

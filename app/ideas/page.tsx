@@ -6,6 +6,7 @@ import { SiteNavbar } from '@/components/site-navbar'
 import { SiteFooter } from '@/components/site-footer'
 import { Floating3DEasterEggs } from '@/components/floating-3d-easter-eggs'
 import { SlxInteractiveCanvas } from '@/components/slx-interactive-canvas'
+import { SmartReveal } from '@/components/smart-reveal'
 import { PROJECTS, ProjectItem } from '@/lib/projects-data'
 import {
   Globe,
@@ -65,23 +66,26 @@ export default function IdeasPage() {
 
       <main className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10">
         <section className="pt-36 pb-10">
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
-            Projects
-          </h1>
+          <SmartReveal>
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
+              Projects
+            </h1>
+          </SmartReveal>
         </section>
 
         <section className="pb-20">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PROJECTS.map((project) => (
-              <IdeaCard
-                key={project.id}
-                id={project.id}
-                title={project.title}
-                category={project.category}
-                description={project.subtitle}
-                externalUrl={project.externalUrl}
-                icon={getIconComponent(project.iconName)}
-              />
+            {PROJECTS.map((project, i) => (
+              <SmartReveal key={project.id} delay={i * 65}>
+                <IdeaCard
+                  id={project.id}
+                  title={project.title}
+                  category={project.category}
+                  description={project.subtitle}
+                  externalUrl={project.externalUrl}
+                  icon={getIconComponent(project.iconName)}
+                />
+              </SmartReveal>
             ))}
           </div>
         </section>
