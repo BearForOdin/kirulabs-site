@@ -1,11 +1,10 @@
 'use client'
 
 import React from 'react'
-import { Mail, Linkedin, Github, Sparkles } from 'lucide-react'
+import { Mail, Linkedin, Github } from 'lucide-react'
 import { SiteNavbar } from '@/components/site-navbar'
 import { SiteFooter } from '@/components/site-footer'
 import { Floating3DEasterEggs } from '@/components/floating-3d-easter-eggs'
-import { SpotlightCard } from '@/components/spotlight-card'
 
 export default function About() {
   const founders = [
@@ -13,7 +12,7 @@ export default function About() {
       id: 1,
       name: 'Selasi Dzeamesi',
       title: 'Co-Founder & CEO',
-      bio: 'Visionary leader driving Kirulabs’ mission to engineer category-defining platforms and enterprise solutions across Africa and beyond.',
+      bio: "As a visionary leader in tech innovation, Selasi drives Kirulabs' mission to become a leading technology company.",
       image: '/ceo.jpg',
       socials: [
         { icon: Linkedin, link: '#' },
@@ -25,7 +24,7 @@ export default function About() {
       id: 2,
       name: 'David Mends',
       title: 'Software & Hardware Supervisor',
-      bio: 'Systems architect overseeing full-stack software engineering, hardware prototyping, and the technical teams powering Kirulabs and siesie.app.',
+      bio: 'Overseeing software and hardware operations, David coordinates the engineering teams powering Kirulabs.',
       image: '/davidcrop.jpg',
       socials: [
         { icon: Linkedin, link: '#' },
@@ -37,7 +36,7 @@ export default function About() {
       id: 3,
       name: 'Paa Joe',
       title: 'DevOps & Finance',
-      bio: 'Combines financial discipline with cloud DevOps reliability—keeping infrastructure resilient, scalable, and investor-ready.',
+      bio: 'With a background in finance and DevOps, Paa manages infrastructure reliability and key operational metrics.',
       image: '/paacrop.jpg',
       socials: [
         { icon: Linkedin, link: '#' },
@@ -49,7 +48,7 @@ export default function About() {
       id: 4,
       name: 'Emmanuel Billa',
       title: 'Community Manager & Brand Ambassador',
-      bio: 'The voice of Kirulabs—bridging our engineering vision with customers, partners, and communities across Ghana.',
+      bio: 'Emmanuel communicates the vision of Kirulabs to our clients, stakeholders, and partner communities.',
       image: '/emmacrop.jpg',
       socials: [
         { icon: Linkedin, link: 'https://linkedin.com/in/emmanuelbilla' },
@@ -60,162 +59,132 @@ export default function About() {
   ]
 
   return (
-    <div className="relative min-h-screen bg-[#04040a] text-foreground overflow-hidden">
-      <div className="fixed inset-0 bg-grid-pattern pointer-events-none z-0" />
-      <div className="fixed inset-x-0 top-0 h-[38rem] bg-radial-glow pointer-events-none z-0" />
-
+    <div className="relative min-h-screen bg-[#050505] text-white">
       <Floating3DEasterEggs />
       <SiteNavbar />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-12 px-4 sm:px-6 lg:px-8 z-10">
-        <div className="max-w-7xl mx-auto text-center space-y-5">
-          <div className="inline-flex items-center gap-2 rounded-full bg-indigo-500/15 border border-indigo-400/30 px-4 py-1.5 text-xs font-mono uppercase tracking-wider text-indigo-300">
-            <Sparkles size={13} />
-            Dekiru Company Limited • Founded 2024
-          </div>
-
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-tight">
-            Meet the <span className="gradient-accent">Engineers &amp; Builders</span>
-            <br />
-            Behind Kirulabs
+      <section className="pt-36 pb-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto text-center space-y-4">
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white">
+            Meet the <span className="text-zinc-400">Team</span>
           </h1>
-
-          <p className="text-base sm:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed">
-            United by a passion for technical rigor and design excellence, we build platforms like{' '}
-            <a
-              href="https://siesie.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-indigo-300 underline underline-offset-4"
-            >
-              siesie.app
-            </a>{' '}
-            and mission-critical systems for modern enterprises.
+          <p className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+            Leaders united by a passion for practical innovation and dependable engineering.
           </p>
         </div>
       </section>
 
       {/* Founders Grid */}
-      <section className="relative py-12 sm:py-16 px-4 sm:px-6 lg:px-8 z-10">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {founders.map((founder) => (
-              <SpotlightCard
+              <div
                 key={founder.id}
-                tilt
-                className="group flex flex-col h-full p-5 sm:p-6"
+                className="glass-card flex flex-col h-full p-5"
               >
-                <div className="relative mb-5 overflow-hidden rounded-2xl border border-white/15 aspect-square bg-[#080914]">
+                <div className="relative mb-4 overflow-hidden rounded-xl border border-zinc-800 aspect-square bg-zinc-900">
                   <img
                     src={founder.image}
                     alt={founder.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>
 
-                <h3 className="text-xl font-bold text-white group-hover:text-indigo-300 transition-colors">
+                <h3 className="text-lg font-semibold text-white">
                   {founder.name}
                 </h3>
-                <p className="text-xs font-mono uppercase tracking-wider text-indigo-400 mt-1 mb-3">
+                <p className="text-xs text-zinc-400 mt-0.5 mb-3">
                   {founder.title}
                 </p>
-                <p className="text-sm text-zinc-300 flex-grow mb-5 leading-relaxed">
+                <p className="text-xs sm:text-sm text-zinc-400 flex-grow mb-4 leading-relaxed">
                   {founder.bio}
                 </p>
 
-                <div className="flex gap-2 pt-3 border-t border-white/10">
+                <div className="flex gap-2 pt-3 border-t border-zinc-900">
                   {founder.socials.map((social, idx) => {
                     const Icon = social.icon
                     return (
                       <a
                         key={idx}
                         href={social.link}
-                        target={social.link.startsWith('http') ? '_blank' : undefined}
-                        rel={social.link.startsWith('http') ? 'noopener noreferrer' : undefined}
                         className="glass-button-icon"
                       >
-                        <Icon size={15} />
+                        <Icon size={14} />
                       </a>
                     )
                   })}
                 </div>
-              </SpotlightCard>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Story Section */}
-      <section className="relative py-16 px-4 sm:px-6 lg:px-8 z-10">
-        <div className="max-w-4xl mx-auto">
-          <SpotlightCard className="space-y-5 p-8 sm:p-10 border-indigo-500/30">
-            <span className="text-xs font-mono uppercase tracking-wider text-indigo-400">
-              Our Origin Story
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">
-              Built in Ghana for Global Standards
-            </h2>
-            <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-              Kirulabs (legally registered as Dekiru Company Limited) was founded in Ghana in 2024 to help organizations move from raw ideas to operational software and hardware systems in record time—eliminating the delays and fragmentation businesses suffer when coordinating multiple disconnected vendors.
+      <section className="py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto">
+          <div className="glass-card space-y-4 p-8">
+            <h2 className="text-2xl font-bold text-white">Our Story</h2>
+            <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
+              Kirulabs is a digital and technology solutions company founded in Ghana in 2024, built to help businesses move from ideas to operational systems in record time—eliminating the delays and fragmentation that organizations face when working with multiple disconnected vendors.
             </p>
-            <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-              Operating at the intersection of software architecture, hardware IoT, and creative execution, we ship both client enterprise solutions and our own flagship ventures such as{' '}
+            <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
+              We operate at the intersection of technology, creativity, and business execution, building client platforms as well as our own products like{' '}
               <a
                 href="https://siesie.app"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-indigo-300 font-medium underline underline-offset-4"
+                className="text-white underline underline-offset-4"
               >
                 siesie.app
               </a>
               .
             </p>
-          </SpotlightCard>
+          </div>
         </div>
       </section>
 
       {/* Core Values Section */}
-      <section className="relative py-16 sm:py-20 px-4 sm:px-6 lg:px-8 z-10">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-12">
-            Our Core <span className="gradient-accent">Engineering Values</span>
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center text-white mb-10">
+            Our Core Values
           </h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             {[
               {
                 title: 'Execution Excellence',
-                description: 'We prioritize shipping verifiable, production-ready systems over slide-deck promises.',
+                description: 'We prioritize delivery and measurable results over promises.',
               },
               {
                 title: 'Speed with Precision',
-                description: 'We iterate rapidly while holding strict standards for security, uptime, and UX craft.',
+                description: 'We move fast, but never at the cost of quality.',
               },
               {
-                title: 'Applied Innovation',
-                description: 'We apply AI, escrow fintech, and IoT hardware to solve tangible everyday problems.',
+                title: 'Innovation',
+                description: 'We apply practical technology to solve real business problems.',
               },
               {
-                title: 'True Partnership',
-                description: 'We embed alongside our clients as co-builders invested in their long-term growth.',
+                title: 'Collaboration',
+                description: 'We work closely with clients as long-term partners.',
               },
               {
-                title: 'Integrity & Trust',
-                description: 'Transparency, accountability, and escrow-grade honesty guide every relationship.',
+                title: 'Integrity',
+                description: 'We operate with transparency, honesty, and accountability.',
               },
               {
                 title: 'Customer-Centricity',
-                description: 'Every line of code is measured by the clarity and value it creates for end users.',
+                description: 'We build solutions around the real goals of our clients.',
               },
             ].map((value, i) => (
-              <SpotlightCard key={i} tilt className="p-6 space-y-2.5">
-                <div className="text-xs font-mono text-indigo-400">0{i + 1}</div>
-                <h3 className="text-xl font-bold text-white">{value.title}</h3>
-                <p className="text-sm text-zinc-300 leading-relaxed">
+              <div key={i} className="glass-card p-6 space-y-2">
+                <h3 className="text-lg font-semibold text-white">{value.title}</h3>
+                <p className="text-sm text-zinc-400 leading-relaxed">
                   {value.description}
                 </p>
-              </SpotlightCard>
+              </div>
             ))}
           </div>
         </div>
