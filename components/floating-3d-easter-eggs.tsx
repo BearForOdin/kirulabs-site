@@ -222,7 +222,7 @@ export function Floating3DEasterEggs() {
 
       {/* Minimal Easter Egg Card when clicked */}
       {activeEgg && (
-        <div className="fixed bottom-5 right-5 z-50 max-w-xs animate-reveal-up">
+        <div className="fixed inset-x-4 bottom-4 sm:left-auto sm:right-5 sm:bottom-5 z-50 sm:max-w-xs animate-reveal-up">
           <div className="rounded-xl bg-card border border-purple-500/50 p-4 shadow-xl">
             <div className="flex items-center justify-between gap-3 mb-1.5">
               <div className="flex items-center gap-2">

@@ -13,8 +13,11 @@ export const metadata: Metadata = {
     'Transform your business with cutting-edge technology and innovative solutions from Kirulabs.',
   generator: 'v0.app',
   icons: {
-    icon: '/favicon.png',
-    apple: '/favicon.png',
+    icon: [
+      { url: '/favicon.png?v=2', type: 'image/png' },
+    ],
+    shortcut: '/favicon.png?v=2',
+    apple: '/apple-icon.png?v=2',
   },
 }
 
