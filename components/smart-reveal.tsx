@@ -26,6 +26,12 @@ export function SmartReveal({
     const el = ref.current
     if (!el) return
 
+    const rect = el.getBoundingClientRect()
+    if (rect.top < window.innerHeight) {
+      setVisible(true)
+      return
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -33,7 +39,7 @@ export function SmartReveal({
           observer.unobserve(el)
         }
       },
-      { threshold: 0.12, rootMargin: '0px 0px -20px 0px' }
+      { threshold: 0.08 }
     )
 
     observer.observe(el)

@@ -32,17 +32,17 @@ export function SiteNavbar() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 border-b border-border/80 bg-background/90 backdrop-blur-md transition-colors duration-300">
-      <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Brand Logo ONLY (No "KIRULABS" text, much bigger and clearer by cropping excess padding) */}
+      <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        {/* Full Unclipped Brand Logo at Balanced Proportion */}
         <Link
           href="/"
           aria-label="Kirulabs Home"
-          className="relative flex items-center justify-center h-14 w-36 overflow-hidden group"
+          className="inline-flex items-center group"
         >
           <img
             src="/kiru-logo.png"
             alt="Kirulabs"
-            className="w-48 max-w-none h-auto object-contain invert dark:invert-0 transition-transform duration-500 cubic-bezier(0.16,1,0.3,1) group-hover:scale-110"
+            className="h-24 w-auto -my-5 object-contain invert dark:invert-0 transition-transform duration-300 group-hover:scale-105"
           />
         </Link>
 
@@ -59,7 +59,7 @@ export function SiteNavbar() {
                 href={item.href}
                 className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${
                   isActive
-                    ? 'bg-foreground text-background shadow-xs scale-[1.02]'
+                    ? 'bg-foreground text-background shadow-xs'
                     : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
@@ -69,35 +69,20 @@ export function SiteNavbar() {
           })}
         </div>
 
-        {/* Right Actions: Light/Dark Theme Toggle + Get Started */}
+        {/* Right Actions: Single Button Dark Mode Switch + Get Started */}
         <div className="hidden md:flex items-center gap-2.5">
-          {/* Light / Dark Mode Switch */}
           <button
             type="button"
             onClick={toggleTheme}
             aria-label="Toggle Light and Dark Mode"
-            className="inline-flex items-center gap-1 rounded-full border border-border bg-secondary/70 p-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-all duration-300 cursor-pointer"
+            title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            className="glass-button-icon h-9 w-9"
           >
-            <span
-              className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 transition-all duration-300 ${
-                !isDark
-                  ? 'bg-background text-foreground shadow-2xs'
-                  : 'text-muted-foreground'
-              }`}
-            >
-              <Sun size={13} />
-              <span>Light</span>
-            </span>
-            <span
-              className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 transition-all duration-300 ${
-                isDark
-                  ? 'bg-background text-foreground shadow-2xs'
-                  : 'text-muted-foreground'
-              }`}
-            >
-              <Moon size={13} />
-              <span>Dark</span>
-            </span>
+            {isDark ? (
+              <Sun size={16} className="transition-transform duration-300 rotate-0" />
+            ) : (
+              <Moon size={16} className="transition-transform duration-300 rotate-0" />
+            )}
           </button>
 
           <Link href="/get-started">

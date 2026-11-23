@@ -11,12 +11,12 @@ export function SiteFooter() {
           <Link
             href="/"
             aria-label="Kirulabs Home"
-            className="relative flex items-center justify-center h-12 w-32 overflow-hidden"
+            className="inline-flex items-center"
           >
             <img
               src="/kiru-logo.png"
               alt="Kirulabs"
-              className="w-44 max-w-none h-auto object-contain invert dark:invert-0"
+              className="h-14 w-auto -my-2 object-contain invert dark:invert-0"
             />
           </Link>
 
@@ -27,14 +27,6 @@ export function SiteFooter() {
             <Link href="/ideas" className="hover:text-foreground transition-colors">
               Projects
             </Link>
-            <a
-              href="https://siesie.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground transition-colors"
-            >
-              siesie.app
-            </a>
             <Link href="/about" className="hover:text-foreground transition-colors">
               About
             </Link>
