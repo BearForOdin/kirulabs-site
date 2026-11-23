@@ -64,7 +64,7 @@ export function IdeaCard({
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-foreground hover:bg-foreground hover:text-background transition-colors"
           >
-            <span>siesie.app</span>
+            <span>{externalUrl.replace(/^https?:\/\/(www\.)?/, '')}</span>
             <ArrowUpRight size={12} />
           </a>
         )}

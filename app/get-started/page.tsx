@@ -39,6 +39,7 @@ export default function GetStartedPage() {
   }
 
   const serviceOptions = [
+    '600 Cedis Business Website Promo',
     'siesie.app',
     'IT & Software Solutions',
     'Web & Mobile Development',

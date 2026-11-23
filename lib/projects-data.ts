@@ -46,7 +46,7 @@ export const PROJECTS: ProjectItem[] = [
       'Built and operated by Kirulabs (Dekiru Company Limited), siesie.app ("Siesie" means to fix, arrange, and put in order in Twi) solves the trust deficit in everyday maintenance and trade services. Whether booking plumbing, electrical engineering, deep cleaning, carpentry, or tiling, customers get transparent upfront quotes while payments are held safely in escrow and released to the professional’s Mobile Money (MoMo) or bank account only after job completion.',
     image: '/sc4.jpg',
     iconName: 'sparkles',
-    accent: 'from-blue-500 via-purple-500 to-pink-500',
+    accent: 'from-zinc-900 to-zinc-700',
     metrics: [
       { label: 'Coverage', value: 'Accra • Tema • Kumasi' },
       { label: 'Payment Safety', value: '100% Escrow Protected' },
@@ -67,6 +67,42 @@ export const PROJECTS: ProjectItem[] = [
       'Full transaction audit trail for both residential and corporate clients',
       'Scalable marketplace architecture built by Kirulabs Core Engineering',
       'Live and actively serving customers at https://siesie.app',
+    ],
+  },
+  {
+    id: 'world-community-church',
+    numericId: 9,
+    title: 'World Community Church',
+    subtitle: 'www.worldcommunitychurch.com • Official Digital Platform',
+    category: 'Web Platform',
+    status: 'Live Product',
+    featured: true,
+    externalUrl: 'https://www.worldcommunitychurch.com',
+    description:
+      'Modern, responsive web platform engineered for World Community Church International (Tantra Hills, Accra)—featuring live service updates, ministry portals, and seamless mobile performance.',
+    longDescription:
+      'Designed and deployed by Kirulabs for World Community Church International in Tantra Hills, Accra, www.worldcommunitychurch.com delivers an inviting, fast-loading digital home for members and visitors worldwide. Built with mobile-first responsiveness, clear service schedules, leadership directories, and instant community connection.',
+    image: '/sc1.jpg',
+    iconName: 'globe',
+    accent: 'from-zinc-900 to-zinc-700',
+    metrics: [
+      { label: 'Live Domain', value: 'worldcommunitychurch.com' },
+      { label: 'Location', value: 'Tantra Hills, Accra' },
+      { label: 'Performance', value: '99+ Mobile Speed' },
+    ],
+    features: [
+      'Custom Responsive Design Tailored for Community & Ministry Identity',
+      'Service Schedules, Location Directions & Event Announcements',
+      'Fast Global CDN Hosting & SSL Security Hardening',
+      'Mobile-First Navigation for Congregants on Any Device',
+      'Search Engine Optimization (SEO) for Local & International Reach',
+      'Direct Contact, Prayer Request & Visitor Onboarding Flows',
+    ],
+    benefits: [
+      'Gives the organization a credible, 24/7 global digital presence',
+      'Makes it effortless for new visitors to find service times and directions',
+      'Loads rapidly even on mobile data networks across Ghana',
+      'Showcases the quality delivered under the Kirulabs 600 Cedis Website Promo',
     ],
   },
   {
