@@ -1,0 +1,3 @@
+# Block automatic Netlify builds when pushing to GitHub
+[build]
+  ignore = "exit 0"
