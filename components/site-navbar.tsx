@@ -31,22 +31,25 @@ export function SiteNavbar() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-background/70 backdrop-blur-sm transition-colors duration-300">
-      <nav className="w-full max-w-[90rem] mx-auto px-4 sm:px-8 lg:px-12 h-20 flex items-center justify-between">
-        {/* Left: Clean Brand Logo anchored further left */}
+      <nav className="w-full max-w-[90rem] mx-auto px-5 sm:px-8 lg:px-12 h-20 flex items-center justify-between">
+        {/* Left: Uploaded Logo + "KIRULABS" */}
         <Link
           href="/"
           aria-label="Kirulabs Home"
-          className="inline-flex items-center -ml-3 sm:-ml-4 group"
+          className="inline-flex items-center gap-3 group"
         >
           <img
-            src="/kiru-logo.png"
-            alt="Kirulabs"
-            className="h-22 w-auto -my-5 object-contain invert dark:invert-0 transition-opacity duration-300 group-hover:opacity-75"
+            src="/kiru-logo.png?v=3"
+            alt="Kirulabs Logo"
+            className="h-9 sm:h-10 w-auto object-contain dark:invert transition-opacity duration-300 group-hover:opacity-75"
           />
+          <span className="text-lg sm:text-xl font-bold tracking-tight text-foreground">
+            KIRULABS
+          </span>
         </Link>
 
-        {/* Right: SLX-Style Bare Minimalist Links + Single Theme Icon */}
-        <div className="hidden md:flex items-center gap-8">
+        {/* Right: Bigger SLX-Style Minimalist Nav Text + Single Theme Icon */}
+        <div className="hidden md:flex items-center gap-9">
           {NAV_ITEMS.map((item) => {
             const isActive =
               item.href === '/'
@@ -56,15 +59,14 @@ export function SiteNavbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative py-1 text-sm transition-colors duration-200 ${
-                  isActive
-                    ? 'text-foreground font-medium'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
+                className={`relative py-1 text-base lg:text-[17px] transition-colors duration-200 ${isActive
+                    ? 'text-foreground font-semibold'
+                    : 'text-muted-foreground hover:text-foreground font-medium'
+                  }`}
               >
                 {item.label}
                 {isActive && (
-                  <span className="absolute inset-x-0 -bottom-0.5 h-px bg-foreground" />
+                  <span className="absolute inset-x-0 -bottom-0.5 h-[1.5px] bg-foreground" />
                 )}
               </Link>
             )
@@ -77,7 +79,7 @@ export function SiteNavbar() {
             title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
             className="p-1.5 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
           >
-            {isDark ? <Sun size={16} /> : <Moon size={16} />}
+            {isDark ? <Sun size={19} /> : <Moon size={19} />}
           </button>
         </div>
 
@@ -89,7 +91,7 @@ export function SiteNavbar() {
             aria-label="Toggle Light and Dark Mode"
             className="p-2 text-muted-foreground hover:text-foreground transition-colors"
           >
-            {isDark ? <Sun size={17} /> : <Moon size={17} />}
+            {isDark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
 
           <button
@@ -98,12 +100,12 @@ export function SiteNavbar() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle Menu"
           >
-            {isMenuOpen ? <X size={19} /> : <Menu size={19} />}
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Dropdown — Bare & Ultra-Simple */}
+      {/* Mobile Dropdown — Simple & Clean */}
       {isMenuOpen && (
         <div className="md:hidden bg-background/95 backdrop-blur-md px-6 pb-5 pt-1 space-y-2">
           {NAV_ITEMS.map((item) => {
@@ -116,11 +118,10 @@ export function SiteNavbar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
-                className={`block py-2 text-sm transition-colors ${
-                  isActive
-                    ? 'text-foreground font-medium'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
+                className={`block py-2 text-base transition-colors ${isActive
+                    ? 'text-foreground font-semibold'
+                    : 'text-muted-foreground hover:text-foreground font-medium'
+                  }`}
               >
                 {item.label}
               </Link>
