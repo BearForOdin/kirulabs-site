@@ -11,14 +11,14 @@ export function SiteFooter() {
           <Link
             href="/"
             aria-label="Kirulabs Home"
-            className="inline-flex items-center gap-2.5"
+            className="inline-flex items-center gap-2"
           >
             <img
               src="/kiru-logo.png?v=3"
               alt="Kirulabs"
-              className="h-8 w-auto object-contain dark:invert"
+              className="h-7 w-auto object-contain dark:invert"
             />
-            <span className="text-base font-bold tracking-tight text-foreground">
+            <span className="text-xs font-light tracking-[0.35em] text-foreground">
               KIRULABS
             </span>
           </Link>

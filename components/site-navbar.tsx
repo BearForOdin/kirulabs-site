@@ -36,14 +36,14 @@ export function SiteNavbar() {
         <Link
           href="/"
           aria-label="Kirulabs Home"
-          className="inline-flex items-center gap-3 group"
+          className="inline-flex items-center gap-2.5 group"
         >
           <img
             src="/kiru-logo.png?v=3"
             alt="Kirulabs Logo"
-            className="h-9 sm:h-10 w-auto object-contain dark:invert transition-opacity duration-300 group-hover:opacity-75"
+            className="h-8 sm:h-9 w-auto object-contain dark:invert transition-opacity duration-300 group-hover:opacity-75"
           />
-          <span className="text-lg sm:text-xl font-bold tracking-tight text-foreground">
+          <span className="text-xs sm:text-sm font-light tracking-[0.35em] text-foreground">
             KIRULABS
           </span>
         </Link>
@@ -60,8 +60,8 @@ export function SiteNavbar() {
                 key={item.href}
                 href={item.href}
                 className={`relative py-1 text-base lg:text-[17px] transition-colors duration-200 ${isActive
-                    ? 'text-foreground font-semibold'
-                    : 'text-muted-foreground hover:text-foreground font-medium'
+                  ? 'text-foreground font-semibold'
+                  : 'text-muted-foreground hover:text-foreground font-medium'
                   }`}
               >
                 {item.label}
@@ -119,8 +119,8 @@ export function SiteNavbar() {
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
                 className={`block py-2 text-base transition-colors ${isActive
-                    ? 'text-foreground font-semibold'
-                    : 'text-muted-foreground hover:text-foreground font-medium'
+                  ? 'text-foreground font-semibold'
+                  : 'text-muted-foreground hover:text-foreground font-medium'
                   }`}
               >
                 {item.label}
