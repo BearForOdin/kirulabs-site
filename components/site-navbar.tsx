@@ -120,24 +120,17 @@ export function SiteNavbar() {
 
       {/* Mobile Dropdown */}
       {isMenuOpen && (
-        <div className="md:hidden border-t border-border bg-background px-4 py-4 space-y-2 animate-reveal-up">
+        <div className="md:hidden border-t border-border bg-background px-4 py-3 space-y-1">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setIsMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-secondary"
+              className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               {item.label}
             </Link>
           ))}
-          <div className="pt-2">
-            <Link href="/get-started" onClick={() => setIsMenuOpen(false)}>
-              <Button className="w-full rounded-full bg-foreground text-background hover:bg-foreground/90">
-                Get Started
-              </Button>
-            </Link>
-          </div>
         </div>
       )}
     </header>
