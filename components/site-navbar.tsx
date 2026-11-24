@@ -31,12 +31,12 @@ export function SiteNavbar() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-background/70 backdrop-blur-sm transition-colors duration-300">
-      <nav className="max-w-5xl mx-auto px-6 sm:px-10 h-20 flex items-center justify-between">
-        {/* Left: Clean Brand Logo */}
+      <nav className="w-full max-w-[90rem] mx-auto px-4 sm:px-8 lg:px-12 h-20 flex items-center justify-between">
+        {/* Left: Clean Brand Logo anchored further left */}
         <Link
           href="/"
           aria-label="Kirulabs Home"
-          className="inline-flex items-center group"
+          className="inline-flex items-center -ml-3 sm:-ml-4 group"
         >
           <img
             src="/kiru-logo.png"
